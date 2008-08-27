@@ -1,0 +1,7 @@
+.clearfix {height: 1px;}
+hr {border-bottom: 1px dotted #ececec;}
+#header_search { bottom: -2px;}
+#footerlogged .links ul ul {height: 8em;}
+.info_results {height: 1px;}
+form .fields p label, form .fields p .label {margin-left: -40%; width: 63%;}
+form .helpinfo {padding-left: 0.5em;}
