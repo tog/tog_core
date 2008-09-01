@@ -6,4 +6,4 @@ Tog::Plugins.settings :tog_core,  'language.default'          => "en",
                                   'mail.system_from_address'  => "Tog Admin <tog@linkingpaths.com>",
                                   'mail.default_subject'      => "[Tog Community] "
 
-require "#{File.dirname(__FILE__)}/lib/url_writer_retardase_inhibitor"
+require "url_writer_retardase_inhibitor"
