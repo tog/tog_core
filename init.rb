@@ -7,3 +7,4 @@ Tog::Plugins.settings :tog_core,  'language.default'          => "en",
                                   'mail.default_subject'      => "[Tog Community] "
 
 require "url_writer_retardase_inhibitor"
+require "will_paginate"
