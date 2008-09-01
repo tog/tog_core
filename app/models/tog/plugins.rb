@@ -6,6 +6,9 @@ module Tog
      else
        Tog::Config["plugins.#{plugin}.#{setting.to_s}"]
      end
+    end  
+    def self.observers           
+      Desert::Rails::Observer.observers
     end
   end
 end
