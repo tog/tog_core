@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   
-  layout "site"
   helper :core  
   
   def index

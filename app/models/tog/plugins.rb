@@ -24,6 +24,9 @@ module Tog
      else
        Tog::Config["plugins.#{plugin}.#{settings.to_s}"]
      end
+    end  
+    def self.observers           
+      Desert::Rails::Observer.observers
     end
   end
 end

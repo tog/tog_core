@@ -4,6 +4,8 @@ class Member::BaseController < ApplicationController
   before_filter :login_required
   #before_filter :set_admin_javascripts_and_stylesheets
 
+  helper :core  
+
   rescue_from ActiveRecord::RecordNotFound, :with => :bad_record
 
   private
