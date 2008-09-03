@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def set_javascripts_and_stylesheets
     @javascripts = %w(prototype effects dragdrop controls application)
-    @stylesheets = %w(base)
+    @stylesheets = %w()
     @feeds = %w()
   end
 end

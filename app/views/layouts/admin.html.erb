@@ -13,28 +13,27 @@
 
 <link rel="icon" href="/images/favicon.ico" />
 
-<link href="/stylesheets/template.css" rel="stylesheet" media="screen" type="text/css" />
-<link href="/stylesheets/style.css" rel="stylesheet" media="screen" type="text/css" />
-<link href="/stylesheets/pages.css" rel="stylesheet" media="screen" type="text/css" />
-
-<%= inject_autodiscovery %>
-<%= inject_js %>
-<%= inject_css %>
+<link href="/tog_core/stylesheets/template.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/tog_core/stylesheets/style.css"    rel="stylesheet" media="screen" type="text/css" />
+<link href="/tog_core/stylesheets/pages.css"    rel="stylesheet" media="screen" type="text/css" />
 
 <!--[if lt IE 7.]>
-<link rel="stylesheet" type="text/css" media="screen" href="../trunk/tog/public-tog/stylesheets/ie6.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/ie6.css" />
 <![endif]--> 
 
 <!--[if IE 7]>
-<link rel="stylesheet" type="text/css" media="screen" href="../trunk/tog/public-tog/stylesheets/ie7.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/ie7.css" />
 <![endif]-->
 
 <script type="text/javascript">
 // <![CDATA[
-    if(navigator.userAgent.indexOf('Mac') != -1) document.write ('<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mac.css" />');    
+    if(navigator.userAgent.indexOf('Mac') != -1) document.write ('<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/mac.css" />');    
 // ]]>	
 </script>
 
+<%= inject_autodiscovery %>
+<%= inject_js %>
+<%= inject_css %>
 
 <link rel="start" type="text/html" href="/" title="Página de inicio" />
 
