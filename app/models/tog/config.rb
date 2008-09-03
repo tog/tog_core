@@ -1,5 +1,5 @@
 module Tog
-  
+
   # The Tog::Config object emulates a hash with simple bracket methods
   # which allow you to get and set values in the configuration table:
   #
@@ -8,22 +8,25 @@ module Tog
   class Config < ActiveRecord::Base
     set_table_name "config"
 
+
     class << self
-     
+
       def [](key)
-        pair = find_by_key(key)
+        pair = find_by_key(key) if table_exists?
         pair.value unless pair.nil?
       end
 
       def []=(key, value)
-        pair = find_by_key(key)
-        unless pair
-          pair = new
-          pair.key, pair.value = key, value
-          pair.save
-        else
-          pair.value = value
-          pair.save
+        if table_exists?
+          pair = find_by_key(key)
+          unless pair
+            pair = new
+            pair.key, pair.value = key, value
+            pair.save
+          else
+            pair.value = value
+            pair.save
+          end
         end
         value
       end
@@ -42,14 +45,23 @@ module Tog
           puts "     #{k.rjust(key_width)} ===========> #{v.to_s.ljust(value_width)}     "
         end
       end
-      
+
       def init_with(key, value)
         pair = find_by_key(key)
         self[key] = value if pair.nil?
       end
+
       def purge
         destroy_all
       end
+
+      private
+      def table_exists?
+        existence = ActiveRecord::Base.connection.tables.include?(self.table_name)
+        logger.warn "Table 'config' not exists" unless existence
+        existence
+      end
+
     end
 
     def value=(param)
@@ -60,5 +72,6 @@ module Tog
       attrb = read_attribute(:value).downcase.strip rescue read_attribute(:value)
       (attrb == "true" || attrb == "false") ?  attrb == "true" : read_attribute(:value)
     end
+
   end
 end
