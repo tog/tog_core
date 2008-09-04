@@ -8,3 +8,8 @@ Tog::Plugins.settings :tog_core,  'language.default'          => "en",
 
 require "url_writer_retardase_inhibitor"
 require "will_paginate"
+
+Tog::Interface.sections(:admin).add "Home", "/admin"          
+Tog::Interface.sections(:member).add "Home", "/"     
+Tog::Interface.sections(:site).add "Home", "/"     
+

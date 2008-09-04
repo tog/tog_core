@@ -38,4 +38,34 @@ module CoreHelper
   def include_autodiscovery(type = :rss, url_options = {}, tag_options = {})
     @feeds << [type, url_options, tag_options]
   end
+  
+  def links_for_navigation(section)
+    tabs = Tog::Interface.sections(section).tabs
+    links = tabs.map do |tab|
+      nav_link_to(tab.name, tab.url) 
+    end.compact
+  end  
+  
+  def current_url?(options)
+    url = case
+    when Hash
+      url_for options
+    else
+      options.to_s
+    end
+    request.request_uri =~ Regexp.new('^' + Regexp.quote(clean(url)))
+  end
+  
+  def clean(url)
+    uri = URI.parse(url)
+    uri.path.gsub(%r{/+}, '/').gsub(%r{/$}, '')
+  end
+  
+  def nav_link_to(name, options)
+    if current_url?(options)
+      %{<li><strong>#{ link_to name, options }</strong></li>}
+    else
+      %{<li>#{ link_to name, options }</li>}
+    end
+  end  
 end

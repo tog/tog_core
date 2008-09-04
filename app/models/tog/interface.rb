@@ -75,9 +75,14 @@ module Tog
         @tabs.size
       end
       
-      def tabs(name)
+      def tabs(name = :all_tabs)
+        if name==:all_tabs
+          @tabs
+        else
           @tabs.find { |tab| tab.name == name }
+        end
       end
+
       
       def clear
         @tabs.clear

@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
     @stylesheets = %w()
     @feeds = %w()
   end
+  
 end
