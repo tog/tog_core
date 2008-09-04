@@ -50,8 +50,8 @@
                 <div id="header_options">
                     <ul>
 												<%if logged_in? -%>
-													<li><%=current_user.login%></li>
-                        	<li><a href="#">My info</a></li>
+													<li>Hello <%=current_user.login%></li>
+                        	<li><%= link_to 'My info', edit_user_path(current_user)%></li>
                         	<li class="last"><a href="/logout">Log-out</a></li>
 												<%else -%>
                       		<li><a href="/signup">Sign up</a></li>
