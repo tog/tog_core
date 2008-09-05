@@ -199,6 +199,23 @@ a.smallarrow.blueright {background-image: url(../images/ico/arrow-right-blue-sma
         font-weight: bold;
         font-size: 1.1em;
     }
+    .portletB li .image {
+        text-align: center;
+        margin: 0 0 0.5em 0;
+    }
+
+    .portletB li .image.left {
+        float: left;
+        clear: left;
+        display: inline;
+        margin: 5px 10px 5px 0;
+    }
+    .portletB li .image.right {
+        float: right;
+        clear: left;
+        display: inline;
+        margin: 5px 0 5px 10px;
+    }
     .portletB li a {
         font-size: 0.9em;
     }
@@ -752,7 +769,6 @@ html>/**/body form .actions .button { /* hack, IE ignores */
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
 }
-
 .button.mainaction {
     border-color: #8c9db0;
     background-color: #8c9db0;
@@ -770,7 +786,14 @@ html>/**/body form .actions .button { /* hack, IE ignores */
     background-position: 100% 50%;
     padding-right: 20px;
 }
-  
-    
+a.button {
+    text-decoration: none;
+    padding: 1px 10px;
+    background: #999;
+    color: #fff;
+}  
+a.button.add, a.button.delete {
+    padding-right: 30px;
+}    
     
     
