@@ -22,15 +22,9 @@
                 <h2><span>Featured Users</span></h2>
                 <div class="portlet_content">
                     <ul class="clearfix">
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
-                        <li><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></li>
+												<% last_users do |user|%>
+													<li><%=link_to icon_for_profile(user.profile, 'small'), profile_path(user.profile)%></li>
+												<%end %>
                     </ul>
                 </div>    
             </div>
@@ -41,30 +35,16 @@
                 <h2><span>Groups</span></h2>
                 <div class="portlet_content">
                     <ul>
-                        <li class="clearfix">
-                            <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
-                            <div class="title">Grupo2</div>
-                            <div class="text">
-                                Descripción del grupo que bla bla aparece a la izquierda unido al grupo
-                            </div>
-                            <div class="members"><a href="#"><strong>52 miembros</strong></a></div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
-                            <div class="title">Grupo2</div>
-                            <div class="text">
-                                Descripción del grupo que bla bla aparece a la izquierda unido al grupo
-                            </div>
-                            <div class="members"><a href="#"><strong>52 miembros</strong></a></div>
-                        </li>
-                        <li class="last clearfix">
-                            <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
-                            <div class="title">Grupo2</div>
-                            <div class="text">
-                                Descripción del grupo que bla bla aparece a la izquierda unido al grupo
-                            </div>
-                            <div class="members"><a href="#"><strong>52 miembros</strong></a></div>
-                        </li>
+	                      <% last_groups do |group| %>
+	                        <li class="clearfix">
+	                            <div class="image"><%=link_to image_for_group(group, 'small'), group_path(group)%></div>
+	                            <div class="title"><%= link_to group.name, group_path(group) %></div>
+	                            <div class="text">
+	                                <%=group.description%>
+	                            </div>
+	                            <div class="members"><%= link_to '<strong>#{group.members.size} members</strong>', group_path(group) %><a href="#"></a></div>
+	                        </li>
+                        <%end %>
                     </ul>
                 </div>    
             </div>
