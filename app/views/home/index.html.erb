@@ -23,7 +23,7 @@
                 <div class="portlet_content">
                     <ul class="clearfix">
 												<% last_users do |user|%>
-													<li><%=link_to icon_for_profile(user.profile, 'small'), profile_path(user.profile)%></li>
+													<li><%=link_to icon_for_profile(user.profile, 'medium'), profile_path(user.profile)%></li>
 												<%end %>
                     </ul>
                 </div>    
@@ -37,12 +37,12 @@
                     <ul>
 	                      <% last_groups do |group| %>
 	                        <li class="clearfix">
-	                            <div class="image"><%=link_to image_for_group(group, 'small'), group_path(group)%></div>
+	                            <div class="image"><%=link_to image_for_group(group, 'medium'), group_path(group)%></div>
 	                            <div class="title"><%= link_to group.name, group_path(group) %></div>
 	                            <div class="text">
 	                                <%=group.description%>
 	                            </div>
-	                            <div class="members"><%= link_to '<strong>#{group.members.size} members</strong>', group_path(group) %><a href="#"></a></div>
+	                            <div class="members"><%= link_to "<strong>#{group.members.size} members</strong>", group_path(group) %><a href="#"></a></div>
 	                        </li>
                         <%end %>
                     </ul>
