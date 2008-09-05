@@ -19,7 +19,7 @@
 
 <!--[if lt IE 7.]>
 <link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/ie6.css" />
-<![endif]--> 
+<![endif]-->
 
 <!--[if IE 7]>
 <link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/ie7.css" />
@@ -27,14 +27,13 @@
 
 <script type="text/javascript">
 // <![CDATA[
-    if(navigator.userAgent.indexOf('Mac') != -1) document.write ('<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/mac.css" />');    
-// ]]>	
+    if(navigator.userAgent.indexOf('Mac') != -1) document.write ('<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/mac.css" />');
+// ]]>
 </script>
 
 <%= inject_autodiscovery %>
 <%= inject_js %>
 <%= inject_css %>
-
 
 <link rel="start" type="text/html" href="/" title="Página de inicio" />
 
@@ -42,42 +41,41 @@
 
 <body>
     <div id="container">
-        
+
         <div id="header" class="clearfix">
             <div id="header_content">
                 <h1 id="logo"><a href="/">toginstallation.com</a></h1>
 
                 <div id="header_options">
-                    <ul>
-												<%if logged_in? -%>
-													<li>Hello <%=current_user.login%></li>
-                        	<li><%= link_to 'My info', member_dashboard_path%></li>
-                        	<li class="last"><a href="/logout">Log-out</a></li>
-												<%else -%>
-                      		<li><a href="/signup">Sign up</a></li>
-                      		<li class="last"><a href="/login">Log-in</a></li>												
-												<%end -%>
-                    </ul>
+                  <ul>
+                    <% if logged_in? -%>
+                      <li>Hello <%=current_user.login%></li>
+                      <li><%= link_to 'My info', member_dashboard_path%></li>
+                      <li class="last"><a href="/logout">Log-out</a></li>
+                    <% else -%>
+                      <li><a href="/signup">Sign up</a></li>
+                      <li class="last"><a href="/login">Log-in</a></li>
+                    <% end -%>
+                  </ul>
                 </div> <!-- /#header_options -->
 
-
                 <div id="menu" class="clearfix">
-                        <ul>
-                            <%=links_for_navigation :site %>
-                        </ul>
+                  <ul>
+                    <%=links_for_navigation :site %>
+                  </ul>
                 </div>  <!-- #menu -->
 
                 <div id="header_search">
-                    <form name="global_search" id="global_search" action="seach">
-                        <label for="global_search_field">Search</label>
-                        <input type="text" name="global_search_field" id="global_search_field" value="search..." class="fieldbox" />
-                        <input type="submit" value="Go" class="button" />
-                    </form>                            
-                </div> <!-- /#header_search -->    
+                  <form name="global_search" id="global_search" action="seach">
+                    <label for="global_search_field">Search</label>
+                    <input type="text" name="global_search_field" id="global_search_field" value="search..." class="fieldbox" />
+                    <input type="submit" value="Go" class="button" />
+                  </form>
+                </div> <!-- /#header_search -->
 
             </div> <!-- /#header_content -->
         </div>  <!-- /#header -->
-        
+
         <div id="menu2">
             <ul>
                 <li class="on"><a href="#">Link 1</a></li>
@@ -85,158 +83,35 @@
                 <li><a href="#">Link 3</a></li>
                 <li><a href="#">Link 4</a></li>
             </ul>
-            
+
         </div> <!-- /#menu2 -->
-        
+
+
         <div id="pagebody">
-            
+
             <%= render_flash_messages %>
 
             <div class="col_60_40 clearfix">
-                
+              <div class="left_col">
+              
                 <%= yield %>
-                
-                
-                
-                <div class="left_col">
-                    
-                    <div class="detail detail1">
-                        <div class="image"><img src="../design/garbage/foto140x140.jpg" alt="Imagen" /></div>
-                        <div class="title">Aitor García</div>
-                        <div class="subtitle">Necesitamos varios estilos de tipografía</div>
-                        <div class="summary">Cabecera principal, subcabecera, cabecera inferior</div>
-                        <div class="text">
-                            <p>Y texto de caracter general. Cuando nos comentarion la idea por primera vez nos pareció que podía tener sentido, más aún cuando uno de ellos se encuentra en el proceso de encontrar para sí mismo una casa compartida.Nulla nibh. Vivamus scelerisque neque et ligula. In nunc pede, commodo non, ultricies non, lobortis sit amet, elit. Etiam mattis, nisl ac lacinia euismod, leo nibh viverra ligula, vel hendrerit ipsum orci eget tortor. Sed vel risus ut arcu molestie feugiat. Vestibulum in mauris elementum orci sodales varius. Donec vulputate tempus lacus. Nunc lacinia ante ut magna. Vivamus laoreet quam quis massa. Etiam tempus lorem ut dolor. Vestibulum pellentesque interdum velit. Proin elementum adipiscing erat.</p>
-                            <p>Nulla nibh. Vivamus scelerisque neque et ligula. In nunc pede, commodo non, ultricies non, lobortis sit amet, elit. Etiam mattis, nisl ac lacinia euismod, leo nibh viverra ligula, vel hendrerit ipsum orci eget tortor. Sed vel risus ut arcu molestie feugiat. Vestibulum in mauris elementum orci sodales varius. Donec vulputate tempus lacus. Nunc lacinia ante ut magna. Vivamus laoreet quam quis massa. Etiam tempus lorem ut dolor. Vestibulum pellentesque interdum velit. Proin elementum adipiscing erat. </p>
-                        </div>
-                        
-                        <div class="portlet portletC" id="portlet_moreLinks">
-                            <h2><span>Más Enlaces</span></h2>
-                            <div class="portlet_content">
-                                <ul>
-                                    <li><a href="#">Ver amigos de Aitor (67)</a></li>
-                                    <li><a href="#">Enviarle un mensaje a Aitor.</a></li>
-                                    <li><a href="#">Este perfil es inapropiado.</a></li>
-                                </ul>
-                            </div> 
-                        </div>    
-                        
-                    </div> <!-- /.detail1 -->    
-
-
-                    <div class="portlet portletB" id="portlet_shoutboxMessages">
-                        <h2><span>Mensajes en el Shoutbox del usuario</span></h2>
-                        <div class="portlet_content">
-                            <ul>
-                                <li class="on">Algunos mensajes pueden estar resaltados igual que otros elementos</li>
-                                <li>Jaikuin' from the iPhone. <span class="datetime">16:04</span> <a href="#">Comentar</a></li>
-                                <li>Imposible tener PUSH mail con gmail y me.com. Cancelado trial. <span class="datetime">15:30</span> <a href="#">Comentar</a></li>
-                            </ul>
-                        </div>    
-                    </div>
-                    
-                    <div class="detail detail2">
-                        <div class="summary">Diseño con columnas</div>
-                        <div class="text">Necesitamos que el diseño incluya columnas que nos permita más movilidad en cuanto a los contenidos, para junto con los módulos poder integrar fácilmente nuevas funcionalidades.</div>
-                    </div>      
-                    
-                </div> <!-- /.left_col -->    
-                    
-                    
-                    
-                    
-                    
-                <div class="right_col">
-                    
-                    <div class="portlet" id="portlet_links">
-                        <h2><span>Enlaces</span></h2>
-                        <div class="portlet_content">
-                            <a href="#" class="add">Necesitamos enlaces de accion</a>
-                            <br />
-                            <a href="#" class="delete">Y diferentes estilos para acciones importantes</a>
-                        </div>    
-                    </div>
-                    
-                    <div class="portlet portletA" id="portlet_friends">
-                        <h2><span>Mis amigos</span></h2>
-                        <div class="portlet_content">
-                            <ul>
-                                <li class="on"><a href="#"><span>Con elementos seleccionados y resaltados</span></a></li>
-                                <li><a href="#"><span>Hugo Chávez</span></a></li>
-                                <li><a href="#"><span>Richard Nixon</span></a></li>
-                            </ul>
-                        </div>    
-                    </div>    
-
-                    <div class="portlet" id="portlet_buttons">
-                        <h2><span>Botones (Sin sombras por favor)</span></h2>
-                        <div class="portlet_content">
-                            <form name="f_nane" id="f_nane" action="nane" method="get">
-                                <input type="submit" name="btn_submit1" class="button" value="Botones normales" />
-                                <input type="submit" name="btn_submit2" class="button add" value="Botones de acción" />
-                                
-                                <br />
-                                <br />
-                                
-                                <input type="submit" name="btn_submit1" class="button mainaction" value="Botones normales" />
-                                <input type="submit" name="btn_submit2" class="button mainaction delete" value="Botones de acción" />
-                            </form>
-                        </div>    
-                    </div>    
-
-                    <div class="portlet portletA" id="portlet_lastForumMessages">
-                        <h2><span>Últimos mensajes en los foros</span></h2>
-                        <div class="portlet_content">
-                            <ul>
-                                <li class="on"><a href="#"><span>Con elementos seleccionados y resaltados</span></a></li>
-                                <li><a href="#"><span>Para encajar funcionalidad en cada página</span></a></li>
-                                <li><a href="#"><span>Elementos 3</span></a></li>
-                            </ul>
-                        </div>    
-                    </div>    
-                    
-                    <div class="portlet" id="portlet_modules">
-                        <h2><span>Módulos y contenedores</span></h2>
-                        <div class="portlet_content">
-                            Dentro de las diferentes páginas tanto públicas como privadas necesitamos módulos, que hay que diseñar gráficamente, para poder incrustar funcionalidad de las diferentes extensiones, para que los desarrolladores puedan personalizar lo que tiene que aparecer en cada vista.
-                        </div>    
-                    </div>    
-
-                    <div class="portlet portletA" id="portlet_modulesNeeded">
-                        <h2><span>Necesitamos módulos</span></h2>
-                        <div class="portlet_content">
-                            <ul>
-                                <li class="on"><a href="#"><span>Con elementos seleccionados y resaltados</span></a></li>
-                                <li><a href="#"><span>Para encajar funcionalidad en cada página</span></a></li>
-                                <li><a href="#"><span>Elementos 3</span></a></li>
-                            </ul>
-                        </div>    
-                    </div>    
-
-                    <div class="portlet portletD" id="portlet_userWall">
-                        <h2><span>En el muro de este usuario se habla de ... </span></h2>
-                        <div class="portlet_content">
-                            Dentro de las diferentes páginas tanto públicas como privadas necesitamos módulos, que hay que diseñar gráficamente, para poder incrustar funcionalidad de las diferentes extensiones, para que los desarrolladores puedan personalizar lo que tiene que aparecer en cada vista.
-                        </div>    
-                    </div>    
-
-                    
-                </div> <!-- /.right_col -->    
-                
-                
-                
-                
-                
-            </div> <!-- /.col_60_40 -->    
-
+              
+              </div> <!-- /.left_col -->
+              <div class="right_col">
+              
+                <%= yield :sidebar %>
+              
+              </div> <!-- /.right_col -->
+            </div> <!-- /.col_60_40 -->
 
         </div><!-- /#pagebody -->
+
 
         <div id="footer" class="clearfix">
              <span class="copyright"><strong>toginstallation.com © 2008</strong></span>
              <span class="links"><a href="#">Acerca de</a> <a href="#">Condiciones de uso</a> <a href="#">Privacidad del sitio</a></span>
-        </div>  <!-- /#footer -->     
-             
+        </div>  <!-- /#footer -->
+
         <div id="footerlogged" class="clearfix">
              <div class="copyright">
                  <strong>toginstallation.com © 2008</strong>
@@ -283,8 +158,8 @@
                      </li>
                  </ul>
              </div>
-        </div>  <!-- /#footerlogged -->          
-        
+        </div>  <!-- /#footerlogged -->
+
     </div> <!-- #container -->
 </body>
 </html>
