@@ -10,7 +10,7 @@ module Tog
         [Major, Minor, Tiny].join('.')
       end
       def full_version
-        "#{[Major, Minor, Tiny].join('.')} #{Codename}"
+        "#{[Major, Minor, Tiny].join('.')} '#{Codename}'"
       end
       alias :to_str :to_s
     end
