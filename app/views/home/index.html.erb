@@ -22,9 +22,9 @@
                 <h2><span>Featured Users</span></h2>
                 <div class="portlet_content">
                     <ul class="clearfix">
-												<% last_users do |user|%>
-													<li><%=link_to icon_for_profile(user.profile, 'medium'), profile_path(user.profile)%></li>
-												<%end %>
+                      <% last_users.each do |user|%>
+                        <li><%=link_to icon_for_profile(user.profile, 'small'), profile_path(user.profile)%></li>
+                      <%end %>
                     </ul>
                 </div>    
             </div>
@@ -35,9 +35,9 @@
                 <h2><span>Groups</span></h2>
                 <div class="portlet_content">
                     <ul>
-	                      <% last_groups do |group| %>
+	                    <% last_groups.each do |group| %>
 	                        <li class="clearfix">
-	                            <div class="image"><%=link_to image_for_group(group, 'medium'), group_path(group)%></div>
+	                            <div class="image"><%= link_to image_for_group(group, 'medium'), group_path(group) %></div>
 	                            <div class="title"><%= link_to group.name, group_path(group) %></div>
 	                            <div class="text">
 	                                <%=group.description%>
