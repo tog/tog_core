@@ -3,8 +3,9 @@ require_plugin 'acts_as_commentable'
 Tog::Plugins.settings :tog_core,  'language.default'          => "en",
                                   'host.name'                 => "0.0.0.0",
                                   'host.port'                 => 3000,
+                                  'site.name'                 => "toginstallation.com",                                  
                                   'mail.system_from_address'  => "Tog Admin <tog@linkingpaths.com>",
-                                  'mail.default_subject'      => "[Tog Community] "
+                                  'mail.default_subject'      => "[Tog Installation] "
 
 require "url_writer_retardase_inhibitor"
 require "acts_as_commentable_patch"
