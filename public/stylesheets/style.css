@@ -37,6 +37,15 @@ button
         right: 5px;
         top: 2px;
     }
+    tfoot .info_results .right {
+        position: static;
+        float: right;
+        display: inline;
+    }
+    tfoot .info_results .info_items {
+        float: left;
+        display: inline;
+    }
 
 .pages_navigation {
     word-spacing: 0.2em;
@@ -515,10 +524,11 @@ a.smallarrow.blueright {background-image: url(../images/ico/arrow-right-blue-sma
 
 /* table */
 
-table {
+table{
     width: 100%;
     border: 0;
     border-collapse: collapse;
+    border: 1px solid #d1d1d1;
 }
     table caption {
         background-color: #edf3fd;
@@ -529,9 +539,6 @@ table {
         padding: 2px 5px;
         border-right: 1px solid #d1d1d1;
         border-left: 1px solid #d1d1d1;
-    }
-    table {
-        border: 1px solid #d1d1d1;
     }
     table th, table td {
         padding: 4px 5px;
@@ -795,5 +802,4 @@ a.button {
 a.button.add, a.button.delete {
     padding-right: 30px;
 }    
-    
     
