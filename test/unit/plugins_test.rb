@@ -12,7 +12,7 @@ class PluginsTest < Test::Unit::TestCase
     should "overwrite an existing setting if forced to do it" do
       Tog::Plugins.settings :test_plugin, 'key' => true
       Tog::Plugins.settings :test_plugin, 'key' => false, :force => :true
-      assert !Tog::Plugins.settings :test_plugin, 'key'
+      assert !Tog::Plugins.settings(:test_plugin, 'key')
     end
 
   end
