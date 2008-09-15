@@ -51,7 +51,8 @@ body {
     background: #000;
     color: #aaa;
     border-top: 1px solid #e7efef;
-    border-bottom: 1px solid #e7efef;    
+    border-bottom: 1px solid #e7efef;
+    width: 100%;    
 }
     #header_content {
         padding: 10px 10px 0 20px;
@@ -111,7 +112,7 @@ body {
 
 
 #menu {
-    padding: 60px 0 0 0;
+    margin: 60px 0 0 0;
     font-size: 1em;
 }
     #menu ul {
@@ -138,6 +139,36 @@ body {
     #menu li.on a {
         font-weight: bold;
     }
+    /**/
+    #menu ul ul {
+        background: #f2f5f7;
+        color: inherit;
+        border-bottom: 1px solid #d6d6d6;
+        position: absolute;
+        left: 0;
+        top: 116px;
+        width: 100%;
+        margin: 0;
+        padding: 7px 0;        
+    }
+    #menu ul ul li {
+        display: inline;
+        margin: 0 -10px 0 10px;
+    }
+    #menu ul ul a {
+        color: #666;
+        background-color: transparent;
+        text-decoration: none;
+        padding: 7px 10px;
+    }
+    #menu ul ul a:hover, #menu ul ul li.on a {
+        color: #dd4171;
+        background-color: transparent;
+    }
+    #menu ul ul li.on a {
+        font-weight: bold;
+    }
+
 
 #header_search {
     position: absolute;
@@ -165,38 +196,9 @@ body {
         min-width: 20px;
     }
     
-
-#menu2 {
-    background: #f2f5f7;
-    color: inherit;
-    padding: 7px 10px;
-    font-size: 1.1em;
-    border-bottom: 1px solid #d6d6d6;
-}    
-    #menu2 ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-    }    
-    #menu2 li {
-        display: inline;
-    }
-    #menu2 a {
-        color: #666;
-        background-color: transparent;
-        text-decoration: none;
-        padding: 7px 10px;
-    }
-    #menu2 a:hover, #menu2 li.on a {
-        color: #dd4171;
-        background-color: transparent;
-    }
-    #menu2 li.on a {
-        font-weight: bold;
-    }
     
 #pagebody {
-    padding: 20px 12px 80px 12px;
+    padding: 60px 12px 80px 12px;
 }
 
 #footer, #footerlogged {
@@ -250,4 +252,3 @@ body {
         border: 0;
         
     }
-    

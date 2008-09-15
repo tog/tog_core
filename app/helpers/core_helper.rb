@@ -42,7 +42,7 @@ module CoreHelper
   def links_for_navigation(section)
     tabs = Tog::Interface.sections(section).tabs
     links = tabs.map do |tab|
-      nav_link_to(tab.name, tab.url) 
+      nav_link_to(tab) 
     end.compact
   end  
   
@@ -61,11 +61,19 @@ module CoreHelper
     uri.path.gsub(%r{/+}, '/').gsub(%r{/$}, '')
   end
   
-  def nav_link_to(name, options)
-    if current_url?(options)
-      %{<li><strong>#{ link_to name, options }</strong></li>}
+  def nav_link_to(tab)
+    if current_url?(tab.url)
+      nav =  %{<li class="on">#{ link_to tab.name, tab.url }}
+      unless tab.items.empty?
+        nav += %{<ul>}
+        tab.items.each do |t|
+          nav += %{<li #{"class=\"on\"" if current_url?(t[1])}>#{ link_to t[0], t[1]}</li>}
+        end
+        nav += %{</ul>}
+      end
+      nav += %{</li>}
     else
-      %{<li>#{ link_to name, options }</li>}
+      %{<li>#{ link_to tab.name, tab.url}</li>}
     end
   end  
 end
