@@ -1,5 +1,5 @@
 <p>
-User <%= @comment.user.login %> has left the following comment: 
+User <%= @comment.user.blank? ? "Anonymous" : @comment.user.login %> has left the following comment: 
 </p>
 <p>
 <%= @comment.comment %>
