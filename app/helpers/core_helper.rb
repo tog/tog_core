@@ -72,7 +72,7 @@ module CoreHelper
   def sub_nav_links_to(tabs)
     unless tabs.empty?
       content_tag :ul do
-        tabs.each do |t|
+        tabs.collect do |t|
           %{<li #{"class=\"on\"" if current_url?(t[1])}>#{ link_to t[0], t[1]}</li>}
         end
       end
