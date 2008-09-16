@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   
   helper :core 
   helper :users
-  helper :groups 
   
   def index
 

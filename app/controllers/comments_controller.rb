@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     commentable = Comment.find_commentable params[:comment][:commentable_type], params[:comment][:commentable_id]
 
     @comment = commentable.comments.new(params[:comment])
-    @comment.user = current_user
+    @comment.user_id = current_user.id if !current_user.nil?
     @comment.approved = !commentable.respond_to?("moderated") || !commentable.moderated || commentable.owner == current_user
 
     respond_to do |format|
