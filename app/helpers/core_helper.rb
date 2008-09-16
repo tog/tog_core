@@ -38,14 +38,14 @@ module CoreHelper
   def include_autodiscovery(type = :rss, url_options = {}, tag_options = {})
     @feeds << [type, url_options, tag_options]
   end
-  
+
   def links_for_navigation(section)
     tabs = Tog::Interface.sections(section).tabs
     links = tabs.map do |tab|
-      nav_link_to(tab) 
+      nav_link_to(tab)
     end.compact
-  end  
-  
+  end
+
   def current_url?(options)
     url = case
     when Hash
@@ -55,25 +55,28 @@ module CoreHelper
     end
     request.request_uri =~ Regexp.new('^' + Regexp.quote(clean(url)))
   end
-  
+
   def clean(url)
     uri = URI.parse(url)
     uri.path.gsub(%r{/+}, '/').gsub(%r{/$}, '')
   end
-  
+
   def nav_link_to(tab)
     if current_url?(tab.url)
-      nav =  %{<li class="on">#{ link_to tab.name, tab.url }}
-      unless tab.items.empty?
-        nav += %{<ul>}
-        tab.items.each do |t|
-          nav += %{<li #{"class=\"on\"" if current_url?(t[1])}>#{ link_to t[0], t[1]}</li>}
-        end
-        nav += %{</ul>}
-      end
-      nav += %{</li>}
+      content_tag(:li, %{#{link_to tab.name, tab.url} #{sub_nav_links_to(tab.items)}}, :class=>"on")
     else
-      %{<li>#{ link_to tab.name, tab.url}</li>}
+      content_tag(:li, link_to(tab.name, tab.url))
     end
-  end  
+  end
+
+  def sub_nav_links_to(tabs)
+    unless tabs.empty?
+      content_tag :ul do
+        tabs.each do |t|
+          %{<li #{"class=\"on\"" if current_url?(t[1])}>#{ link_to t[0], t[1]}</li>}
+        end
+      end
+    end
+  end
+
 end
