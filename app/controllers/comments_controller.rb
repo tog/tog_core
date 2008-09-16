@@ -11,12 +11,12 @@ class CommentsController < ApplicationController
       if @comment.save
         CommentMailer.deliver_new_comment_notification(@comment)
         if @comment.approved
-          flash[:comment_notice] = 'Comment added'
+          flash[:ok] = 'Comment added'
         else
-          flash[:comment_notice] = "Comments for this entry are moderated, so it won't be shown until a moderator approvesit"
+          flash[:warning] = "Comments for this entry are moderated, so it won't be shown until a moderator approvesit"
         end
       else
-        flash[:comment_notice] = 'Error while saving your comment'
+        flash[:error] = 'Error while saving your comment'
       end
       format.html { redirect_to request.referer }
     end
@@ -27,12 +27,12 @@ class CommentsController < ApplicationController
 
     if admin? || comment.commentable.owner == current_user
       if comment.destroy
-        flash[:comment_notice] = 'Comment removed'
+        flash[:ok] = 'Comment removed'
       else
-        flash[:comment_notice] = 'Error removing comment'
+        flash[:error] = 'Error removing comment'
       end
     else
-      flash[:comment_notice] = 'Error removing comment'
+      flash[:error] = 'Error removing comment'
     end
 
     redirect_to request.referer
@@ -44,12 +44,12 @@ class CommentsController < ApplicationController
     if admin? || comment.commentable.owner == current_user
       comment.approved = true
       if comment.save
-        flash[:comment_notice] = 'Comment approved'
+        flash[:ok] = 'Comment approved'
       else
-        flash[:comment_notice] = 'Error approving comment'
+        flash[:error] = 'Error approving comment'
       end
     else
-      flash[:comment_notice] = 'Error approving comment'
+      flash[:error] = 'Error approving comment'
     end
 
     redirect_to request.referer
