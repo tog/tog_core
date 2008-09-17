@@ -47,7 +47,9 @@ module Tog
       end
 
       def init_with(key, value)
-        pair = find_by_key(key)
+        if table_exists?
+          pair = find_by_key(key)
+        end
         self[key] = value if pair.nil?
       end
 
