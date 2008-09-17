@@ -28,7 +28,8 @@ end
 
 
 
-Tog::Interface.sections(:admin).add "Home", "/admin"          
+Tog::Interface.sections(:admin).add "Home", "/admin" 
+Tog::Interface.sections(:admin).add "Configuration", "/admin/configuration"         
 Tog::Interface.sections(:member).add "Home", "/"     
 Tog::Interface.sections(:site).add "Home", "/"     
 

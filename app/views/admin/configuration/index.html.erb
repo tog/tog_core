@@ -1,0 +1,46 @@
+<h2><%= "Tog Configuration" %></h2>
+
+<% form_for :config, :url => admin_configuration_update_url, :html => {:id => "settings", :method => "put"} do |f| -%>
+
+  <% sections = @config_items.group_by{|config| config.key.match(/^(.*)\.(.*)/)[1]} %>
+
+  <% if !sections.blank? %>
+    <% for section in sections %>
+        <% if !section[1].blank? %>        
+          <div class="portlet portletA" id="portlet_actividad">
+              <h2><span><%= section[0].gsub('system', '').gsub('.', ' ').titleize %></span></h2>
+              <div class="portlet_content">                       
+                  <table class="tableA">
+                      <tbody>
+                      <% configs = section[1] %>  
+                      <% for config in configs %>
+                        <% display_item = config.key.match(/^(.*)\.(.*)/)[2].gsub('.', ' ') %>
+                        <tr>
+                            <td><%= display_item.titleize %></td>
+                            <td width="60%" style="text-align: left"><%= text_field_tag "config[#{config.key}]", config.value ? config.value : "false", :class => 'textbox', :maxlength => 255, :size => '40' %></td>
+                        </tr>
+                      <% end %>                    
+                  </tbody></table>
+              </div>    
+            </div> <!-- /.portlet -->    
+            <br/>              
+        <% else %>
+        <% end %>
+    <% end %>
+  <% else %>
+    
+  <% end %>
+                    
+  
+
+                    <%= submit_tag 'Update configuration', {:accesskey => "s"} %>
+
+
+
+
+
+
+
+
+
+<% end -%>

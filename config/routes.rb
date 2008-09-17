@@ -13,6 +13,10 @@ namespace(:admin) do |admin|
   admin.with_options(:controller => 'dashboard') do |home|
     home.dashboard  '/',  :action => 'index'
   end
+  admin.with_options(:controller => 'configuration') do |config|
+    config.configuration '/configuration', :action => 'index'
+    config.configuration_update '/configurator/update', :action => 'update'    
+  end
 end
 
 namespace(:member) do |member|
