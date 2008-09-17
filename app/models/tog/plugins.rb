@@ -15,4 +15,16 @@ module Plugins
   def self.observers           
     Desert::Rails::Observer.observers
   end
+  
+  def self.helpers(*args)
+    args.flatten.each do |hlp|
+      case hlp
+        when Module
+          ActionController::Base.helper hlp
+        else
+          raise ArgumentError, "helpers expects a Module argument (was: #{args.inspect})"
+      end
+    end
+  end
+  
 end

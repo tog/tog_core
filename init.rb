@@ -27,7 +27,7 @@ Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
   I18n.load_translations file
 end
 
-
+Tog::Plugins.helpers CoreHelper
 
 Tog::Interface.sections(:admin).add "Home", "/admin" 
 Tog::Interface.sections(:admin).add "Configuration", "/admin/configuration"         
