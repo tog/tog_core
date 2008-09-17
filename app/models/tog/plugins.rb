@@ -3,7 +3,7 @@ module Plugins
    options.reverse_merge! :force => false
    
    if settings.is_a? Hash
-     if options[:force]
+     unless options[:force]
        settings.each_pair{|k,v| Tog::Config.init_with("plugins.#{plugin}.#{k.to_s}", v) }
      else
        settings.each_pair{|k,v| Tog::Config["plugins.#{plugin}.#{k.to_s}"] = v }
