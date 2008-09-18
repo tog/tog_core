@@ -89,4 +89,18 @@ module CoreHelper
     end
   end
 
+  
+  def public_continuum
+    Activity.find(:all, :limit=> 40, :order => " created_at DESC").collect{|a|
+      content_tag :li, :class => "clearfix" + cycle(nil, " pair") do 
+        profile = content_tag :div, :class => "image" do 
+          link_to icon_for_profile(a.user.profile, 'tiny'), profile_path(a.user.profile)
+        end
+        text = content_tag :div, :class => "text" do 
+          " #{link_to(a.user.profile.full_name, profile_path(a.user.profile))} generated action '#{a.action}' on #{a.item_type}##{a.item_id} "
+        end
+        profile + text
+      end
+    }
+  end
 end
