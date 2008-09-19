@@ -41,4 +41,7 @@ module InterfaceHelper
     end
   end
   
+  def columns_distribution
+    @columns_distribution || "col_60_40"
+  end
 end
