@@ -1,0 +1,25 @@
+<div class="titleB">Reported abuses</div>
+<table class="tableB">
+  <thead>
+    <tr>
+      <th scope="col">Abuse</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Description</th>
+      <th scope="col">Email</th>
+      <th scope="col">Reported at</th>
+      <th scope="col">URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for abuse in @abuses %>
+    <tr<%= cycle(' class="pair"','') -%>>
+      <td><strong><%= link_to "##{abuse.id}", admin_abuses_show_path(abuse) %></strong></td>
+      <td><%= abuse.title %></td>
+      <td><%= truncate(abuse.description) %></td>
+      <td><%= abuse.email %></td>
+      <td><%= abuse.created_at %></td>                                                              
+      <td><%= link_to abuse.referer, abuse.referer %></td>                                                              
+    </tr>
+    <% end %>
+  </tbody>
+</table>

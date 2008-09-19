@@ -1,0 +1,29 @@
+<% form_for :abuse, :url => admin_abuses_confirm_path do |f| -%>
+
+  <h2><%= @abuse.title %></h2>
+  <fieldset>
+    <p>Email <br/>
+      <%= @abuse.email %>
+    </p>
+
+    <p>URL <br/>
+      <%= link_to @abuse.referer, @abuse.referer %>
+    </p>
+
+    <p>Created at <br/>
+      <%= @abuse.created_at %>
+    </p>
+
+    <p>Resource <br/>
+      <%= @abuse.resource_id %>:<%= @abuse.resource_type %>
+    </p>
+
+    <p>Description <br/>
+      <%= @abuse.description %>
+    </p>
+
+    <%= submit_tag "Confirm" %>
+  </fieldset>
+  
+
+<% end %>

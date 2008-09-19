@@ -9,6 +9,13 @@ with_options(:controller => 'comments') do |comment|
   comment.comment_remove  'comments/:id/remove',  :action => 'remove'
 end
 
+with_options(:controller => 'abuse') do |abuse|
+  abuse.report_abuse            'report_abuse', :action => 'new',    :conditions => { :method => :get }
+  abuse.report_abuse_with_model 'report_abuse/:resource_type/:resource_id',    :action => 'new',    :conditions => { :method => :get }
+  abuse.report_abuse_create     'report_abuse',    :action => 'create', :conditions => { :method => :post }
+end
+
+
 namespace(:admin) do |admin|
   admin.with_options(:controller => 'dashboard') do |home|
     home.dashboard  '/',  :action => 'index'
@@ -16,6 +23,11 @@ namespace(:admin) do |admin|
   admin.with_options(:controller => 'configuration') do |config|
     config.configuration '/configuration', :action => 'index'
     config.configuration_update '/configurator/update', :action => 'update'    
+  end
+  admin.with_options(:controller => 'abuses_manager') do |manage|
+    manage.abuses_index   '/manage_abuses'    ,          :action => 'index'
+    manage.abuses_show    '/manage_abuses/:id',          :action => 'show'
+    manage.abuses_confirm '/manage_abuses/:id/confirm',  :action => 'confirm'
   end
 end
 
