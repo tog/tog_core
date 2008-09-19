@@ -13,7 +13,8 @@ Tog::Plugins.settings :tog_core,  'language.default'          => "en",
                                   'site.name'                 => "toginstallation.com",                                  
                                   'mail.system_from_address'  => "Tog Admin <tog@linkingpaths.com>",
                                   'mail.default_subject'      => "[Tog Installation] ",
-                                  'patch_field_error_proc'    => true
+                                  'patch_field_error_proc'    => true,
+                                  'pagination_size'           => 50
 
 require "active_record_helper_patch"
 require "acts_as_commentable_patch"

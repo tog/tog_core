@@ -10,6 +10,16 @@
       <th scope="col">URL</th>
     </tr>
   </thead>
+  <tfoot>
+    <tr>
+      <td colspan="6" class="info_results">
+        <span class="info_items"><%= page_entries_info @abuses %></span>
+        <span class="pages_navigation right">
+          <%= will_paginate @abuses, :container => false %>
+        </span>
+        </td>
+    </tr>
+  </tfoot>
   <tbody>
     <% for abuse in @abuses %>
     <tr<%= cycle(' class="pair"','') -%>>
