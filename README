@@ -1,6 +1,14 @@
 = tog_core
 
-== Funcionality included
+== Included funcionality
+
+# Base controllers for member and admin actions
+# Base dashboards controller (public, member and admin)
+# Dependency declaration for common social features (comments, tags, activity, etc.)
+# Abuse and comments management
+# Configuration management
+# Helpers for user interface, config access, etc.
+# Patches and libraries
 
 == Authors and credits
 
