@@ -1,6 +1,6 @@
 = tog_core
 
-== Included funcionality
+== Included functionality
 
 # Base controllers for member and admin actions
 # Base dashboards controller (public, member and admin)
