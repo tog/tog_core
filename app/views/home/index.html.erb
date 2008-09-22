@@ -12,11 +12,11 @@
       <li>And enjoy: photo &amp; video sharing, blogs system, forums, and many others extensions.</li>
     </ul>
     <div class="action"><a href="/signup"><strong>Sign up now!</strong></a></div>
-  </div>    
+  </div>
 </div>
 <br/>
 <div class="col_50_50 clearfix">
-        
+
         <div class="left_col">
             <div class="portlet portletG" id="portlet_featuredUsers">
                 <h2><span>Featured Users</span></h2>
@@ -26,10 +26,10 @@
                         <li><%=link_to icon_for_profile(user.profile, 'small'), profile_path(user.profile)%></li>
                       <%end %>
                     </ul>
-                </div>    
+                </div>
             </div>
-        </div> <!-- /.left_col -->   
-        
+        </div> <!-- /.left_col -->
+
         <div class="right_col">
              <div class="portlet portletH" id="portlet_groups">
                 <h2><span>Groups</span></h2>
@@ -46,18 +46,18 @@
 	                        </li>
                         <%end %>
                     </ul>
-                </div>    
+                </div>
             </div>
-        </div> <!-- /.right_col -->    
-        
-        
+        </div> <!-- /.right_col -->
+
+
     </div> <!-- /.col_50_50 -->
 
    <hr class="wide" />
    <br />
    <br />
-   
-   <div class="portlet portletI" id="potlet_featuredPosts">
+<%#  
+    <div class="portlet portletI" id="potlet_featuredPosts">
        <h2><span>Featured Post</span></h2>
        <div class="portlet_content">
             <ul>
@@ -80,65 +80,54 @@
                     </div>
                 </li>
             </ul>
-        </div>    
-    </div> <!-- /#potlet_featuredPosts -->    
+        </div>
+    </div> <!-- /#potlet_featuredPosts -->
 
-    
-    
+%>
+
 <% content_for :sidebar do %>
 
 
    <div class="portlet portletI" id="potlet_publicContinuum">
-       <h2><span>The public continuum...</span></h2>
-       <div class="portlet_content">
-            <ul>
-              <%= public_continuum %>
+     <h2><span>The public continuum...</span></h2>
+     <div class="portlet_content">
+       <ul>
+         <%= public_continuum(10) %>
+       </ul>
+     </div>
+   </div> <!-- /#potlet_featuredPosts -->
 
-            </ul>
-        </div>    
-    </div> <!-- /#potlet_featuredPosts --> 
+   <br />
 
-    <br />
-    
     <div class="portlet portletJ" id="portlet_pluginsTog">
         <h2><span>Discover more plugins for tog </span></h2>
         <div class="portlet_content">
             <ul>
                 <li class="clearfix">
-                    <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
+                    <div class="image"><img src="/tog_core/images/promotion.png" alt="" /></div>
                     <div class="title">Picto</div>
                     <div class="text">
-                        Picto is a full fledged tog extensions that will enable your users to upload photos to their accounts and manage sets, etc...
+                        Picto is a plugin for photo management and sharing between users of your social network.
                     </div>
-                    <div class="more"><a href="#"><strong>See more »</strong></a></div>
+                    <div class="more"><a href="http://www.toghq.com/tog_plugins/4-tog_picto"><strong>See more »</strong></a></div>
                 </li>
                 <li class="clearfix">
-                    <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
                     <div class="title">Vault</div>
                     <div class="text">
-                        Vault is a full fledged tog extensions that will enable your users to upload photos to their accounts and manage sets, etc...
+                        A small CMS for your website static pages!
                     </div>
-                    <div class="more"><a href="#"><strong>See more »</strong></a></div>
-                </li>
-                <li class="clearfix">
-                    <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
-                    <div class="title">Picto</div>
-                    <div class="text">
-                        Picto is a full fledged tog extensions that will enable your users to upload photos to their accounts and manage sets, etc...
-                    </div>
-                    <div class="more"><a href="#"><strong>See more »</strong></a></div>
+                    <div class="more"><a href="http://www.toghq.com/tog_plugins/7-tog_vault"><strong>See more »</strong></a></div>
                 </li>
                 <li class="last clearfix">
-                    <div class="image"><a href="#"><img src="garbage/foto72x72.jpg" alt="Foto de XX" /></a></div>
-                    <div class="title">Vault</div>
+                    <div class="title">Conversatio</div>
                     <div class="text">
-                        Vault is a full fledged tog extensions that will enable your users to upload photos to their accounts and manage sets, etc...
+                        A simple blog system.
                     </div>
-                    <div class="more"><a href="#"><strong>See more »</strong></a></div>
+                    <div class="more"><a href="http://www.toghq.com/tog_plugins/2-tog_conversatio"><strong>See more »</strong></a></div>
                 </li>
-            </ul> 
-        </div>    
-    </div>    
+            </ul>
+        </div>
+    </div>
 
-    
+
 <% end %>

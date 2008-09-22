@@ -45,8 +45,8 @@ module CoreHelper
   end
 
 
-  def public_continuum
-    Activity.find(:all, :limit=> 40, :order => " created_at DESC").collect{|a|
+  def public_continuum(size = 40)
+    Activity.find(:all, :limit=> size, :order => " created_at DESC").collect{|a|
       content_tag :li, :class => "clearfix" + cycle(nil, " pair") do 
         profile = content_tag :div, :class => "image" do 
           link_to icon_for_profile(a.user.profile, 'tiny'), profile_path(a.user.profile)
