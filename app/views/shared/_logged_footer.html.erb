@@ -1,28 +1,29 @@
 <div id="footerlogged" class="clearfix">
-     <div class="copyright">
-         <strong><%=config['plugins.tog_core.site.name']%> © <%=Time.now.year%></strong>
-         <br />
-         This site is powered by the mighty Tog Platform <%= Tog::Core::Version.full_version %> 
-     </div>
-     <div class="links">
-         <ul class="clearfix">
-             <li>Groups
-                 <ul>
-                     <li><a href="/member/groups">My groups</a></li>
-                     <li><a href="/member/groups/new">Create a new group</a></li>
-                 </ul>
-             </li>
-             <li>Messages
-                 <ul>
-                     <li><a href="/member/messages">My messages</a></li>
-                     <li><a href="/member/messages/new">Write a message</a></li>
-                 </ul>
-             </li>
-             <li>Profile
-                 <ul>
-                     <li><a href="/member/account">My account</a></li>
-                 </ul>
-             </li>
-         </ul>
-     </div>
+  <div class="copyright">
+    <strong><%=config['plugins.tog_core.site.name']%> © <%=Time.now.year%></strong>
+    <br />
+    This site is powered by the mighty Tog Platform <%= Tog::Core::Version.full_version %>
+  </div>
+  <div class="links">
+    <ul class="clearfix">
+      <li>Groups
+        <ul>
+          <li><%= link_to "My Groups", member_groups_path -%></li>
+          <li><%= link_to "Create a new Group", new_member_group_path -%></li>
+        </ul>
+      </li>
+      <li>Messages
+        <ul>
+          <li><%= link_to "My Messages", member_messages_path -%></li>
+          <li><%= link_to "Write a message", new_member_message_path -%></li>
+        </ul>
+      </li>
+      <li>Profile
+        <ul>
+          <li><%= link_to "My Account", member_my_account_path -%></li>
+          <li><%= link_to "Edit Profile", edit_member_profile_path(current_user.profile) -%></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>  <!-- /#footerlogged -->
