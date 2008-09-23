@@ -1,19 +1,26 @@
-= tog_core
+Core
+=====
 
-== Included functionality
+Tog core module.
 
-# Base controllers for member and admin actions
-# Base dashboards controller (public, member and admin)
-# Dependency declaration for common social features (comments, tags, activity, etc.)
-# Abuse and comments management
-# Configuration management
-# Helpers for user interface, config access, etc.
-# Patches and libraries
+Included functionality
+----------------------
 
-== Authors and credits
-
-Authors::   Roberto Salicio, Alberto Molpeceres, Aitor Garcia
-Website::   http://www.toghq.com
+* Base controllers for member and admin actions
+* Base dashboards controller (public, member and admin)
+* Dependency declaration for common social features (comments, tags, activity, etc.)
+* Abuse and comments management
+* Configuration management
+* Helpers for user interface, config access, etc.
+* Patches and libraries
 
 
-Want to discuss, request features, ask questions? Just visit {www.toghq.com}[http://www.toghq.com].
+More
+-------
+
+[http://github.com/tog/tog_core](http://github.com/tog/tog_core)
+
+[http://github.com/tog/tog_core/wikis](http://github.com/tog/tog_core/wikis)
+
+
+Copyright (c) 2008 Keras Software Development, released under the MIT license
