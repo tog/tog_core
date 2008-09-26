@@ -13,7 +13,7 @@ module UrlWriterRetardaseInhibitor
             default_url_options[:host] = request.host
             #default_url_options[:port] = request.port unless request.port == 80
             default_url_options[:port] = request.port
-            default_url_options.delete(:port) if request.port == 80
+            default_url_options.delete(:port) if request.port == 80 || request.port == 443
             protocol = /(.*):\/\//.match(request.protocol)[1] if request.protocol.ends_with?("://")
             default_url_options[:protocol] = protocol
           end
@@ -33,8 +33,8 @@ module UrlWriterRetardaseInhibitor
     def self.included(am)
       am.send(:include, ::ActionController::UrlWriter)
       ::ActionController::UrlWriter.module_eval do
-        default_url_options[:host] = 'localhost'
-        default_url_options[:port] = 3000
+        default_url_options[:host] = Tog::Plugins.settings :tog_core, 'host.name'
+        default_url_options[:port] = Tog::Plugins.settings :tog_core, 'host.port'
         default_url_options[:protocol] = 'http'
       end
     end
