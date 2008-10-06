@@ -31,7 +31,7 @@ end
 
 Tog::Plugins.helpers CoreHelper
 
-Tog::Interface.sections(:admin).add "Home", "/admin" 
+Tog::Interface.sections(:admin).add "Home", "/admin/dashboard" 
 
 Tog::Interface.sections(:admin).add "Manage", "/admin/configuration"
 Tog::Interface.sections(:admin).tabs("Manage").add_item "Configuration", "/admin/configuration"
