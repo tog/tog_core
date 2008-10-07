@@ -2,6 +2,7 @@ module CoreHelper
   include CommentsHelper
   include InterfaceHelper
   include AbuseHelper
+  include UsersHelper
   
   def config
     Tog::Config
