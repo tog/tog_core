@@ -60,8 +60,26 @@ module Tog
       private
       def table_exists?
         existence = ActiveRecord::Base.connection.tables.include?(self.table_name)
-        logger.warn "Table 'config' not exists" unless existence
+        unless existence
+          logger.warn "Table 'config' not exists. Just the last effort to create the config table if doesn't exists"
+          begin
+            create_tog_config_table
+            existence = true
+          rescue Exception => e
+            logger.warn "Unable to create table 'config'. Holy shit!"
+            logger.error e
+          end
+        end
         existence
+      end
+      # Just the last effort to create the config table if doesn't exists
+      def create_tog_config_table
+        ActiveRecord::Base.connection.create_table "config", :force => false do |t|
+          t.string :key,   :limit => 255, :default => "", :null => false
+          t.string :value
+          t.timestamps
+        end
+        ActiveRecord::Base.connection.add_index "config", ["key"], :name => "key", :unique => true
       end
 
     end

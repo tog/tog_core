@@ -1,6 +1,6 @@
 class CreateTogConfig < ActiveRecord::Migration
   def self.up
-    create_table "config", :force => true do |t|
+    create_table "config", :force => false do |t|
       t.string :key,   :limit => 255, :default => "", :null => false
       t.string :value
       t.timestamps
