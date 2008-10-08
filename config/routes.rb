@@ -36,3 +36,15 @@ namespace(:member) do |member|
     home.dashboard  '/',  :action => 'index'
   end
 end
+
+namespace(:admin) do |admin| 
+  admin.resources :users
+end
+
+namespace(:member) do |member|
+  member.with_options(:controller => 'users') do |user|
+    user.my_account       '/account',         :action => 'my_account'
+    user.destroy_account  '/destroy',         :action => 'destroy'
+    user.change_password  '/change_password', :action => 'change_password', :conditions => { :method => :post }
+  end
+end
