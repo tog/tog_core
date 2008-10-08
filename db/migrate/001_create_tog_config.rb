@@ -1,14 +1,11 @@
 class CreateTogConfig < ActiveRecord::Migration
   def self.up
-    create_table "config", :force => false do |t|
-      t.string :key,   :limit => 255, :default => "", :null => false
-      t.string :value
-      t.timestamps
-    end
-    add_index "config", ["key"], :name => "key", :unique => true
+    # Since we've had problems with the proper moment to create the config table
+    # We've moved the process of manage the table existence to a internal method
+    # Called create_tog_config_table on Tog::Config. So for now... nothing to see
+    # here. Move on. Please. Now.
   end
 
   def self.down
-    drop_table "config"
   end
 end
