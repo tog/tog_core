@@ -1,16 +1,16 @@
 module Version
-  Major = '0'
-  Minor = '1'
-  Tiny  = '1'
-  Module= 'tog_core'
-  # http://en.wikipedia.org/wiki/Moons_of_Jupiter
-  #Codename = 'Adrastea'
+  MAJOR = 0
+  MINOR = 3
+  TINY  = 0
+  MODULE = "tog_core"
+  STRING = [MAJOR, MINOR, TINY].join('.')
+
   class << self
     def to_s
-      [Major, Minor, Tiny].join('.')
+      STRING
     end
     def full_version
-      "#{Module} #{[Major, Minor, Tiny].join('.')}"
+      "#{MODULE} #{STRING}"
     end
     alias :to_str :to_s
   end
