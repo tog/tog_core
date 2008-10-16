@@ -1,9 +1,13 @@
 <p>
 User <%= @comment.user.blank? ? "Anonymous" : @comment.user.login %> has left the following comment: 
 </p>
+
 <p>
 <%= @comment.comment %>
+<br/><br/>
+<%= "Visit #{@url} to see the comment." unless @url.nil? %>
 </p>
+
 <p>
 <%= "This comment is pending for approval." unless @comment.approved? %>
 </p>

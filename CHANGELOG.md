@@ -1,5 +1,6 @@
 Edge
 ----
+* Ticket #99. Link to commentable in comment notification mail
 
 0.3.0
 ----

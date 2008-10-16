@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        CommentMailer.deliver_new_comment_notification(@comment)
+        CommentMailer.deliver_new_comment_notification(@comment, request.referer)
         if @comment.approved
           flash[:ok] = 'Comment added'
         else
