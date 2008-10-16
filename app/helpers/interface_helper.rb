@@ -24,7 +24,7 @@ module InterfaceHelper
   end
   
   def nav_link_to(tab)
-    if current_url?(tab.url)
+    if tab.include_url?(request.request_uri)
       content_tag(:li, %{#{link_to tab.name, tab.url} #{sub_nav_links_to(tab.items)}}, :class=>"on")
     else
       content_tag(:li, link_to(tab.name, tab.url))

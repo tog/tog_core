@@ -1,5 +1,6 @@
 Edge
 ----
+* Ticket #100. Menu problem in admin site
 * Ticket #99. Link to commentable in comment notification mail
 
 0.3.0

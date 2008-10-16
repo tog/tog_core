@@ -5,7 +5,7 @@ module Interface
    case section
    when :site
      @site_tabset ||= TabSet.new
-   when :member 
+   when :member
      @member_tabset ||= TabSet.new
    when :admin
      @admin_tabset ||= TabSet.new
@@ -14,26 +14,30 @@ module Interface
 
   class Tab
     attr_accessor :name, :url, :items
-    
+
     def initialize(name, url, options = {})
       @name, @url = name, url
       @items = []
       @visibility = [options[:for], options[:visibility]].flatten.compact
       @visibility = [:all] if @visibility.empty?
     end
-    
+
     def shown_for?(user)
       visibility.include?(:all) or
         visibility.any? { |role| user.send("#{role}?") }
     end
-    
+
     def add_item(name, url)
       @items << [name, url]
     end
-    
+
+    def include_url?(url)
+      @url==url || @items.flatten.include?(url)
+    end
+
   end
-  
-  
+
+
   class TabSet
     include Enumerable
 
@@ -58,15 +62,15 @@ module Interface
         end
       end
     end
-    
+
     def remove(name)
       @tabs.delete(tabs(name))
     end
-    
+
     def size
       @tabs.size
     end
-    
+
     def tabs(name = :all_tabs)
       if name==:all_tabs
         @tabs
@@ -74,11 +78,11 @@ module Interface
         @tabs.find { |tab| tab.name == name }
       end
     end
-    
+
     def clear
       @tabs.clear
     end
-    
+
   end
-  
-end 
+
+end
