@@ -1,5 +1,8 @@
 Edge
 ----
+* Check spam in comments using Viking
+* Tog::Search improved interface and docss
+* Clean up
 * Ticket #100. Menu problem in admin site
 * Ticket #99. Link to commentable in comment notification mail
 
