@@ -4,8 +4,9 @@ module Juixe
 
       module ClassMethods
         def acts_as_commentable(attribute_for_title=nil)
-          has_many :comments, :as => :commentable, :dependent => :destroy, :order => 'created_at ASC'
-          has_many :active_comments, :as => :commentable, :class_name => 'Comment', :conditions => ["approved = ?", true], :order => 'created_at ASC'
+          has_many :comments,         :as => :commentable, :conditions => ["spam = ?", false], :order => 'created_at ASC', :dependent => :destroy
+          has_many :all_comments,     :as => :commentable, :class_name => 'Comment', :order => 'created_at ASC'
+          has_many :active_comments,  :as => :commentable, :class_name => 'Comment', :conditions => ["approved = ?", true],  :order => 'created_at ASC'
           has_many :pending_comments, :as => :commentable, :class_name => 'Comment', :conditions => ["approved = ?", false], :order => 'created_at ASC'
 
           write_inheritable_attribute(:attribute_for_title, attribute_for_title)

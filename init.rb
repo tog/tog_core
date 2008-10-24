@@ -2,6 +2,7 @@ require_plugin 'acts_as_commentable'
 require_plugin 'acts_as_scribe'
 require_plugin 'acts_as_taggable_on_steroids'
 require_plugin 'acts_as_abusable'
+require_plugin 'viking'
 
 # require the will_paginate as a gem. This could be ´config.gem´ as well.
 require "will_paginate"
@@ -15,6 +16,12 @@ Tog::Plugins.settings :tog_core,  'language.default'          => "en",
                                   'mail.default_subject'      => "[Tog Installation] ",
                                   'patch_field_error_proc'    => true,
                                   'pagination_size'           => 50
+
+Tog::Plugins.settings :tog_core,  'spam.engine' => '', # 'defensio' || 'akismet'
+                                  'spam.key'    => '', # api key
+                                  'spam.url'    => ''  # url registered in spam engine
+
+
 
 require "active_record_helper_patch"
 require "acts_as_commentable_patch"
