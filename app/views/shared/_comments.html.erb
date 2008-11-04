@@ -11,7 +11,7 @@
               <% else %>
                 <div class="text"><strong><%= comment_user_name(comment) %> says:</strong></div>
               <% end %>
-              <%= textilize comment.comment %>
+              <%= sanitize(textilize(comment.comment), :tags => (Tog::Plugins.settings :tog_core, 'sanitized.comments.allowed_tags').split, :attributes => (Tog::Plugins.settings :tog_core, 'sanitized.comments.allowed_attributes').split) %>
               <span class="helpinfo"><%= comment.created_at %> <%= link_to "[permalink]", "#comment_#{comment.id}" %></span>
           </li>
         <% end %>

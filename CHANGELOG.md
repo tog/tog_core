@@ -1,5 +1,6 @@
 Edge
 ----
+* Sanitize tags change allowed
 * Ticket #102. Consolidate comments listing and form
 * Check spam in comments using Viking
 * Tog::Search improved interface and docss

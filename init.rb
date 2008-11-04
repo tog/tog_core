@@ -21,6 +21,10 @@ Tog::Plugins.settings :tog_core,  'spam.engine' => '', # 'defensio' || 'akismet'
                                   'spam.key'    => '', # api key
                                   'spam.url'    => ''  # url registered in spam engine
 
+Tog::Plugins.settings :tog_core,  'sanitized.allowed_tags'       => (ActionView::Base.sanitized_allowed_tags.to_a + %w( object param embed )).join(' '),
+                                  'sanitized.allowed_attributes' => (ActionView::Base.sanitized_allowed_attributes.to_a + %w( name width height value src href )).join(' '),
+                                  'sanitized.comments.allowed_tags' => ActionView::Base.sanitized_allowed_tags.to_a.join(' '),
+                                  'sanitized.comments.allowed_attributes' => ActionView::Base.sanitized_allowed_attributes.to_a.join(' ')
 
 
 require "active_record_helper_patch"
