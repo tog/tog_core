@@ -1,16 +1,30 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
+class ModelType1;end;
+class ModelType2;end;
+
 class SearchTest < Test::Unit::TestCase
   context "The Tog search" do
 
-    context "with a few search enabled models" do
+    context "given a search source" do
       setup do
-        Tog::Search.sources << User
+        @model_type_1 = ModelType1.new
+        ModelType1.stubs(:site_search).with("term", {}).returns(@model_type_1)
+        Tog::Search.sources << ModelType1
       end
-      should "find matching results" do
-        # => todo implement this !
-        #query = "ipod"
-        #assert_equal 1, Tog::Search.search(query).size, "Should find one match for '#{query}'"
+
+      should "manage the source list correctly" do
+        assert_contains Tog::Search.sources, ModelType1
+      end
+
+      context "and a term to search" do
+        should "retrieve matches" do
+          assert 1, Tog::Search.search("term").size
+          assert_equal @model_type_1, Tog::Search.search("term").first
+        end
+        should "return a paginated collection" do
+          assert Tog::Search.search("term").respond_to?(:paginate)
+        end
       end
     end
 
@@ -18,9 +32,7 @@ class SearchTest < Test::Unit::TestCase
       setup do
         Tog::Search.sources << Tog::Config
       end
-      should "silently skip these models" do
-        assert_equal 0, Tog::Search.search("ipod").size
-      end
     end
+
   end
 end
