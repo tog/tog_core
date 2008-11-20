@@ -1,0 +1,10 @@
+Matching results: 
+<% if !@matches.blank? %>
+  <% for match in @matches %>
+    <%= match.title %>
+  <% end %>
+<% else %>
+  
+<% end %>
+
+<%= will_paginate @matches %>

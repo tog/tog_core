@@ -3,6 +3,10 @@
 
 root :controller => "home"
 
+with_options(:controller => 'search') do |search|
+  search.do_search 'search', :action => 'search'
+end
+
 with_options(:controller => 'comments') do |comment|
   comment.comment         'comments',             :action => 'create'
   comment.comment_approve 'comments/:id/approve', :action => 'approve'

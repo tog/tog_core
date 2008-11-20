@@ -28,4 +28,13 @@ class Comment < ActiveRecord::Base
       email
     end
   end
+  def commentable_owner
+    commentable.owner if commentable 
+  end
+  def commentable_owner_email
+    commentable.owner.email if commentable && commentable.owner
+  end
+  def commentable_title
+    commentable.title_for_comment
+  end
 end

@@ -66,11 +66,7 @@
                 </div>  <!-- #menu -->
 
                 <div id="header_search">
-                  <form name="global_search" id="global_search" action="seach">
-                    <label for="global_search_field">Search</label>
-                    <input type="text" name="global_search_field" id="global_search_field" value="search..." class="fieldbox" />
-                    <input type="submit" value="Go" class="button" />
-                  </form>
+                  <%= render :partial => "shared/search_form" %>
                 </div> <!-- /#header_search -->
 
             </div> <!-- /#header_content -->

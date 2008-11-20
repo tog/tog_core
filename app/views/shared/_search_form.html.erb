@@ -1,0 +1,5 @@
+<% form_tag(do_search_url, {:method => :get, :id => "global_search"}) do -%>
+  <%= label :global_search_field, "Search" %>
+  <%= text_field_tag :global_search_field, "search...", {:class => "fieldbox"} %>
+  <%= submit_tag "Go", {:class => "button"} %>
+<% end -%>

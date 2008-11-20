@@ -4,69 +4,59 @@ require 'comments_controller'
 class CommentableModel;end;
 class CommentsController; def rescue_action(e) raise e end; end
 
-class CommentsControllerTest < Test::Unit::TestCase
+class CommentsControllerTest < ActionController::TestCase
 
-  def setup
-    @controller = CommentsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-    @commentable_model_1 = CommentableModel.new
-    @request.env['HTTP_REFERER'] = "http://www.test.com"
-    Comment.stubs(:find_commentable).returns(@commentable_model_1)
-    Comment.any_instance.stubs(:commentable_owner_email).returns("test@test.com")
-
-    CommentableModel.stubs(:find).returns(@commentable_model_1)
-    CommentableModel.any_instance.stubs(:comments).returns(Comment)
-    CommentableModel.any_instance.stubs(:title_for_comment).returns("The commentable title")
-  end
 
   context "The comments controller" do
+    setup do
+      @request.env['HTTP_REFERER'] = "http://www.example.com"
 
+      @owner = Factory(:user, :login => "test")
+      @commentable_model_1 = mock
+      @commentable_model_1.stubs({:id => 1,
+                                  :owner => @owner, 
+                                  :new_record? => false,
+                                  :comments => Comment, 
+                                  :title_for_comment =>"The commentable title"})
+      @commentable_model_1.class.stubs(:base_class).returns(CommentableModel)
+      @commentable_model_1.class.stubs(:find).returns(@commentable_model_1)
+
+      Comment.stubs(:find_commentable).returns(@commentable_model_1)
+      Comment.any_instance.stubs(:commentable_owner_email).returns(@owner.email)
+
+    end
     [:get, :post].each {|verb|
-      should_route verb, "/comments/1/approve", :controller => :comments, :action => :approve, :id => 1 
-      should_route verb, "/comments/1/remove", :controller => :comments, :action => :remove, :id => 1 
+      should_route verb, "/comments/1/approve", :controller => :comments, :action => :approve, :id => 1
+      should_route verb, "/comments/1/remove", :controller => :comments, :action => :remove, :id => 1
       should_route verb, "/comments", :controller => :comments, :action => :create
     }
-
-    context "given a spam comment" do
-      setup do
-        Cerberus.stubs(:check_spam).returns(true)
-      end
-      context "when POST-ing it" do
-        setup do
-          post :create, :comment => { :name => 'Ronald', :comment => 'This is the comment', :commentable_type => "CommentableModel", :commentable_id => 1 }
-        end
-        should_respond_with :redirect
-        should_redirect_to '"http://www.test.com"'
-        should_change "Comment.count", :by => 1
-        should "create a new comment marked as spam" do
-          assert Comment.last.spam, "The new comment should be marked as spam."
-        end
-
-      end
-    end
-
-    context "given a ham comment" do
+    
+    context "when POST-ing a comment" do
       setup do
         Cerberus.stubs(:check_spam).returns(false)
+        do_create
       end
-
+      should_create_comment_and_redirect
+      should "send an email to the commented item owner" do
+        assert_sent_email do |email|
+           email.to.include?(@owner.email)
+        end
+      end
     end
-    context "given any commment" do
+    
+    context "when POST-ing a comment that is spam" do
       setup do
-        @comment = Factory(:comment)
+        Cerberus.stubs(:check_spam).returns(true)
+        do_create
       end
-      context "when removing it" do
-        setup do
-          get :remove, :id => @comment 
-        end
-        should_change "Comment.count", :by => -1
-        
-      end
-      context "when approving it" do
-        setup do
-        end
+      should_create_comment_and_redirect
+      should "mark it as spam" do
+        assert Comment.last.spam, "The new comment should be marked as spam."
       end
     end
+  end
+
+  def do_create
+    post :create, :comment => { :name => 'Ronald', :comment => 'This is the comment', :commentable => @commentable_model_1}
   end
 end

@@ -7,14 +7,14 @@ class PluginsTest < Test::Unit::TestCase
       Tog::Plugins.settings :test_plugin, :key => true
     end
 
-    should "overwrite existing settings by default" do
+    should "should not overwrite existing settings by default" do
       Tog::Plugins.settings :test_plugin, :key => false
-      assert !Tog::Plugins.settings(:test_plugin, :key)
+      assert Tog::Plugins.settings(:test_plugin, :key)
     end
 
-    should "should not overwrite an existing setting if force is disabled" do
-      Tog::Plugins.settings :test_plugin, {:key => false}, {:force => false}
-      assert Tog::Plugins.settings(:test_plugin, :key)
+    should "should overwrite an existing setting if forced" do
+      Tog::Plugins.settings :test_plugin, {:key => false}, {:force => true}
+      assert !Tog::Plugins.settings(:test_plugin, :key)
     end
 
   end

@@ -11,7 +11,7 @@ require "will_paginate"
 Tog::Plugins.settings :tog_core,  'language.default'          => "en",
                                   'host.name'                 => "0.0.0.0",
                                   'host.port'                 => 3000,
-                                  'site.name'                 => "toginstallation.com",                                  
+                                  'site.name'                 => "toginstallation.com",
                                   'mail.system_from_address'  => "Tog Admin <tog@linkingpaths.com>",
                                   'mail.default_subject'      => "[Tog Installation] ",
                                   'patch_field_error_proc'    => true,
@@ -42,13 +42,11 @@ end
 
 Tog::Plugins.helpers CoreHelper
 
-Tog::Interface.sections(:admin).add "Home", "/admin/dashboard" 
+Tog::Interface.sections(:admin).add "Home", "/admin/dashboard"
 
 Tog::Interface.sections(:admin).add "Manage", "/admin/configuration"
 Tog::Interface.sections(:admin).tabs("Manage").add_item "Configuration", "/admin/configuration"
 Tog::Interface.sections(:admin).tabs("Manage").add_item "Abuses", "/admin/manage_abuses"
 
-Tog::Interface.sections(:member).add "Home", "/"     
-Tog::Interface.sections(:site).add "Home", "/"     
-
-
+Tog::Interface.sections(:member).add "Home", "/"
+Tog::Interface.sections(:site).add "Home", "/"

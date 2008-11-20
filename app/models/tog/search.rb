@@ -29,16 +29,17 @@ module Tog
     # * <tt>:paginate_options</tt> - The same options allowed for the +paginate+ method provided by will_paginate
     #
     def search(query, search_options = {}, paginate_options = {})
+      paginate_options.reverse_merge! :per_page => Tog::Config['plugins.tog_core.pagination_size']
       results = []
-      @sources.each{|source|
-        if source.respond_to?(:search)
-          results << source.search(query, search_options)
+      @sources.uniq.flatten.each{|source|
+        if source.respond_to?(:site_search)
+          results << source.site_search(query, search_options)
         else
           RAILS_DEFAULT_LOGGER.warn(<<-WARNING
 
-*********************************************************************************************************************************************
-SEARCH WARNING: The source #{source} should implement a ´self.search(query, search_options={})´ method to be available on site-wide searches.
-*********************************************************************************************************************************************
+**************************************************************************************************************************************************
+SEARCH WARNING: The source #{source} should implement a ´self.site_search(query, search_options={})´ method to be available on site-wide searches.
+**************************************************************************************************************************************************
 
           WARNING
           )
