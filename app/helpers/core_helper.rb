@@ -3,6 +3,7 @@ module CoreHelper
   include InterfaceHelper
   include AbuseHelper
   include UsersHelper
+  include SearchHelper
   
   def config
     Tog::Config

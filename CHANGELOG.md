@@ -1,9 +1,10 @@
 Edge
 ----
+* Search controller and search helper improved.
 * Sanitize tags change allowed
 * Ticket #102. Consolidate comments listing and form
 * Check spam in comments using Viking
-* Tog::Search improved interface and docss
+* Tog::Search improved interface and docs
 * Clean up
 * Ticket #100. Menu problem in admin site
 * Ticket #99. Link to commentable in comment notification mail

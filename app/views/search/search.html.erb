@@ -1,10 +1,12 @@
-Matching results: 
+Matching results for <strong>'<%= @term %>'</strong>: 
+
+<ul>
 <% if !@matches.blank? %>
   <% for match in @matches %>
-    <%= match.title %>
+    <li><%= render_match_partial match %></li>
   <% end %>
 <% else %>
-  
+  <li>No matching results.</li>
 <% end %>
-
+</ul>
 <%= will_paginate @matches %>
