@@ -8,11 +8,11 @@ class SearchTest < Test::Unit::TestCase
       setup do
         @model_type_1 = ModelType1.new
         ModelType1.stubs(:site_search).with("term", {}).returns(@model_type_1)
-        Tog::Search.sources << ModelType1
+        Tog::Search.sources << "ModelType1"
       end
 
       should "manage the source list correctly" do
-        assert_contains Tog::Search.sources, ModelType1
+        assert_contains Tog::Search.sources, "ModelType1"
       end
 
       context "and a term to search" do
