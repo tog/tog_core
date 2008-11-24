@@ -37,7 +37,7 @@ require "url_writer_retardase_inhibitor"
 # until they're upgraded is released and we see widespread adoption of it.
 require "i18n" unless defined?(I18n)
 Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
-  I18n.load_translations file
+  I18n.load_path << file
 end
 
 Tog::Plugins.helpers CoreHelper
