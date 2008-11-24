@@ -8,6 +8,7 @@ Edge
 * Clean up
 * Ticket #100. Menu problem in admin site
 * Ticket #99. Link to commentable in comment notification mail
+* Sync tog's i18n implementation with rails 2.2.2
 
 0.3.0
 ----
