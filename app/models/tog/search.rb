@@ -6,7 +6,7 @@
 #   Tog::Search.sources << "User"
 #   @results = Tog::Search.search("joe-theplumber") # the @results instance will be paginated
 #
-# The modules used as +sources+ should implement a class method called search(query, search_options={}) and
+# The modules used as +sources+ should implement a class method called site_search(query, search_options={}) and
 # should return an +Array+ instance.
 module Search
 
