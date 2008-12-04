@@ -50,7 +50,8 @@
                   <ul>
                     <% if logged_in? -%>
                       <li>Hello <%=current_user.login%></li>
-                      <li><%= link_to 'My info', member_dashboard_path%></li>
+                      <li><a href="/member/account">Account</a></li>
+                      <li><%= link_to 'Dashboard', member_dashboard_path%></li>
                       <li class="last"><a href="/logout">Log-out</a></li>
                     <% else -%>
                       <li><a href="/signup">Sign up</a></li>
