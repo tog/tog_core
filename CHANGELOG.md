@@ -1,5 +1,8 @@
 Edge
 ----
+
+0.4.0
+----
 * Search controller and search helper improved.
 * Sanitize tags change allowed
 * Ticket #102. Consolidate comments listing and form
