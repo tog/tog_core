@@ -4,6 +4,7 @@ module CoreHelper
   include AbuseHelper
   include UsersHelper
   include SearchHelper
+  include RatesHelper
   
   def config
     Tog::Config

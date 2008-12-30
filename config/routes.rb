@@ -51,4 +51,8 @@ namespace(:member) do |member|
     user.destroy_account  '/destroy',         :action => 'destroy'
     user.change_password  '/change_password', :action => 'change_password', :conditions => { :method => :post }
   end
+  
+  member.with_options(:controller => 'rates') do |rate|
+    rate.rate '/rate',  :action=>'create'
+  end
 end
