@@ -586,6 +586,25 @@ table{
         padding: 1px 5px;
     }
 
+    /* */
+    .tableE {
+      margin-bottom: 10px;
+    }
+    .tableE caption {
+      border-top: 1px solid #d1d1d1;
+    }
+    .tableE th {
+      border-right: 0;
+      padding: 5px;
+      vertical-align: top;
+      width: 30%;
+    }
+    .tableE td {
+      border-left: 0;
+      padding: 5px;
+      text-align: left;
+    }
+
 /* detail */
 
 .detail {
