@@ -7,9 +7,9 @@ Included functionality
 ----------------------
 
 * Base controllers for member and admin actions
-* Base dashboards controller (public, member and admin)
-* Dependency declaration for common social features (comments, tags, activity, etc.)
-* Abuse and comments management
+* Base dashboards controllers (public, member and admin)
+* Dependency declaration for common social features (comments, ratings, tags, activity, etc.)
+* Abuse, ratings and comments management
 * Configuration management
 * Helpers for user interface, config access, etc.
 * Patches and libraries
