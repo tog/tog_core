@@ -1,4 +1,4 @@
-<h2><%= "Tog Configuration" %></h2>
+<h2><%= I18n.t("tog_core.admin.configuration.title") %></h2>
 
 <% form_for :config, :url => admin_configuration_update_url, :html => {:id => "settings", :method => "put"} do |f| -%>
 
@@ -33,7 +33,7 @@
                     
   
 
-                    <%= submit_tag 'Update configuration', {:accesskey => "s"} %>
+                    <%= submit_tag I18n.t("tog_core.admin.configuration.update"), {:accesskey => "s"} %>
 
 
 

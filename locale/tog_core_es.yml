@@ -16,3 +16,18 @@ es:
         added: Valoración añadida
         already_rated: Ya has valroado esta entrada
         error: Error al guardar tu valoración
+    admin:
+      configuration:
+        title: Configuración del sitio
+        update: Actualizar
+      abuses:
+        title: Abusos denunciados
+        confirm: Confirmar
+        model:
+          abuse: Abuso
+          subject: Asunto
+          description: Descripción
+          email: Email
+          created_at: Creado el
+          url: URL
+          resource: Recurso

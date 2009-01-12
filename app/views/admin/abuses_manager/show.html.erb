@@ -2,27 +2,27 @@
 
   <h2><%= @abuse.title %></h2>
   <fieldset>
-    <p>Email <br/>
+    <p><%=I18n.t("tog_core.admin.abuses.model.email")%> <br/>
       <%= @abuse.email %>
     </p>
 
-    <p>URL <br/>
+    <p><%=I18n.t("tog_core.admin.abuses.model.url")%> <br/>
       <%= link_to @abuse.referer, @abuse.referer %>
     </p>
 
-    <p>Created at <br/>
+    <p><%=I18n.t("tog_core.admin.abuses.model.created_at")%> <br/>
       <%= @abuse.created_at %>
     </p>
 
-    <p>Resource <br/>
+    <p><%=I18n.t("tog_core.admin.abuses.model.resource")%> <br/>
       <%= @abuse.resource_id %>:<%= @abuse.resource_type %>
     </p>
 
-    <p>Description <br/>
+    <p><%=I18n.t("tog_core.admin.abuses.model.description")%> <br/>
       <%= @abuse.description %>
     </p>
 
-    <%= submit_tag "Confirm" %>
+    <%= submit_tag I18n.t("tog_core.admin.abuses.confirm") %>
   </fieldset>
   
 
