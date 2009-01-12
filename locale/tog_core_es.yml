@@ -1,0 +1,18 @@
+# {{xxx}}
+es:
+  tog_core:
+    plugin_name: Core
+    plugin_description: Plugin principal de tog  
+    site:
+      comment:
+        added: Comentario añadido
+        left_pending: Esta entrada tiene sus comentarios moderados de modo que tu comentario no se mostrará hasta que sea aprobado
+        removed: Comentario eliminado
+        approved: Comentario aprobado
+        error_commenting: Error al guardar tu comentario
+        error_removing: Error al eliminar el comentario
+        error_approving: Error al aprobar el comentario
+      rating:
+        added: Valoración añadida
+        already_rated: Ya has valroado esta entrada
+        error: Error al guardar tu valoración

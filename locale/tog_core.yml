@@ -1,0 +1,19 @@
+# {{xxx}}
+en:
+  tog_core:
+    plugin_name: Core
+    plugin_description: tog's core plugin    
+    site:
+      comment:
+        added: Comment added
+        left_pending: Comments for this entry are moderated, so your comment won't be shown until a moderator approves it
+        removed: Comment removed
+        approved: Comment approved
+        error_commenting: Error while saving your comment
+        error_removing: Error removing comment
+        error_approving: Error approving comment
+      rating:
+        added: Rate added
+        already_rated: You've already rated this item
+        error: Error while saving your rate
+      

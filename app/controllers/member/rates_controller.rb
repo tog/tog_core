@@ -9,12 +9,12 @@ class Member::RatesController < Member::BaseController
       rating = rateable.rate params[:rate]
       rating.user_id = current_user.id
       if rating.save
-        flash[:ok] = 'Rate added'
+        flash[:ok] = I18n.t("tog_core.site.rating.added")
       else
-        flash[:error] = 'Error while saving your rate'
+        flash[:error] = I18n.t("tog_core.site.rating.error")
       end
     else
-      flash[:error] = "you've already rated"
+      flash[:error] = I18n.t("tog_core.site.rating.already_rated")
     end
     respond_to do |format|
       format.html { redirect_to request.referer }
