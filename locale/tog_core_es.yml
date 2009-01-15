@@ -4,8 +4,6 @@ es:
     plugin_name: Core
     plugin_description: Plugin principal de tog  
     site:
-      rating:
-        rating: Valoración
       comment:
         added: Comentario añadido
         left_pending: Esta entrada tiene sus comentarios moderados de modo que tu comentario no se mostrará hasta que sea aprobado
@@ -18,13 +16,14 @@ es:
         says: dice
         permalink: enlace permanente
         no_comments: No hay comentarios
-        add_comment: Añade un comentario
+        add_comment: Añade tu comentario
         name: Nombre
         email: Email
         website: Website
         post_comment: Enviar comentario
         comment: Comentario        
       rating:
+        rating: Valoración        
         added: Valoración añadida
         already_rated: Ya has valroado esta entrada
         error: Error al guardar tu valoración

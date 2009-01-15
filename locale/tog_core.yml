@@ -4,8 +4,6 @@ en:
     plugin_name: Core
     plugin_description: tog's core plugin    
     site:
-      rating:
-        rating: Rating
       comment:
         added: Comment added
         left_pending: Comments for this entry are moderated, so your comment won't be shown until a moderator approves it
@@ -18,13 +16,14 @@ en:
         says: says
         permalink: permalink
         no_comments: No comments
-        add_comment: Add your comments
+        add_comment: Add your comment
         name: Name
         email: Email
         website: Website
         post_comment: Post comment
         comment: Comment        
       rating:
+        rating: Rating        
         added: Rate added
         already_rated: You've already rated this item
         error: Error while saving your rate
