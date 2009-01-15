@@ -4,6 +4,8 @@ en:
     plugin_name: Core
     plugin_description: tog's core plugin    
     site:
+      rating:
+        rating: Rating
       comment:
         added: Comment added
         left_pending: Comments for this entry are moderated, so your comment won't be shown until a moderator approves it

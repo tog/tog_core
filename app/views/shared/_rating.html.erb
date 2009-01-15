@@ -1,0 +1,7 @@
+<%if rateable.total_ratings > 0%>
+  <strong><%= I18n.t("tog_core.site.rating.rating")%></strong><br/>
+  <%= rateable.rating%><br/>
+<%end%>
+<%if logged_in? %>
+  <%= [1,2,3,4,5].collect{|i| rate_link(rateable, i) + " "}%>
+<%end%>
