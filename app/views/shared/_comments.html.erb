@@ -1,5 +1,5 @@
 <div class="portlet portletI">
-  <h2><span>Comments</span></h2>
+  <h2><span><%= I18n.t("tog_core.site.comment.comments")%></strong></span></h2>
   <div class="portlet_content">
     <ul>
       <% if !commentable.comments.blank? %>
@@ -7,38 +7,37 @@
           <li class="clearfix<%= cycle(nil, " pair") %>" id="comment_<%= comment.id %>">
               <% if comment.user %>
                 <div class="image"><%= link_to icon_for_profile(comment.user.profile, 'small'), profile_path(comment.user.profile) %></div>
-                <div class="text"><strong><%= link_to comment.user.profile.full_name, profile_path(comment.user.profile) %> says:</strong></div>
+                <div class="text"><strong><%= link_to comment.user.profile.full_name, profile_path(comment.user.profile) %> <%= I18n.t("tog_core.site.comment.says")%>:</strong></div>
               <% else %>
-                <div class="text"><strong><%= comment_user_name(comment) %> says:</strong></div>
+                <div class="text"><strong><%= comment_user_name(comment) %> <%= I18n.t("tog_core.site.comment.says")%>:</strong></div>
               <% end %>
               <%= sanitize(textilize(comment.comment), :tags => (Tog::Plugins.settings :tog_core, 'sanitized.comments.allowed_tags').split, :attributes => (Tog::Plugins.settings :tog_core, 'sanitized.comments.allowed_attributes').split) %>
-              <span class="helpinfo"><%= comment.created_at %> <%= link_to "[permalink]", "#comment_#{comment.id}" %></span>
+              <span class="helpinfo"><%= comment.created_at %> <%= link_to I18n.t("tog_core.site.comment.permalink"), "#comment_#{comment.id}" %></span>
           </li>
         <% end %>
       <% else %>
-        No comments on this photo by now.
+        <%= I18n.t("tog_core.site.comment.no_comments")%>
       <% end %>
     </ul>
   </div>
 </div> <!-- /#potlet_featuredPosts -->
 
-<h3><a name="reply"></a>Add your comment</h3>
+<h3><a name="reply"></a><%= I18n.t("tog_core.site.comment.add_comment")%></h3>
 <% form_for :comment, :url => comment_path do |f| -%>
   <%= f.hidden_field :commentable_type, {:value => commentable.class.name} -%>
   <%= f.hidden_field :commentable_id, {:value => commentable.id} -%>
   <% unless logged_in? -%>
-      <label for="comment_name">Name</label>
+      <label for="comment_name"><%= I18n.t("tog_core.site.comment.name")%></label>
       <%= f.text_field :name, :class=>"fieldbox wide" %>
       <br/>
-      <label for="comment_email">Email</label>
+      <label for="comment_email"><%= I18n.t("tog_core.site.comment.email")%></label>
       <%= f.text_field :email, :class=>"fieldbox wide" %>
       <br/>
-      <label for="comment_url">Website</label>
+      <label for="comment_url"><%= I18n.t("tog_core.site.comment.website")%></label>
       <%= f.text_field :url, :class=>"fieldbox wide" %>
-      <label for="comment_comment">Comment</label>
   <% end -%>
-
+  <label for="comment_comment"><%= I18n.t("tog_core.site.comment.comment")%></label>
   <%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide fieldbox"} -%>
   <br/>
-  <%= submit_tag 'Post comment', {:accesskey => "s", :class=>"button mainaction"} %>
+  <%= submit_tag I18n.t("tog_core.site.comment.post_comment"), {:accesskey => "s", :class=>"button mainaction"} %>
 <% end %>

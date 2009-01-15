@@ -14,6 +14,16 @@ en:
         error_commenting: Error while saving your comment
         error_removing: Error removing comment
         error_approving: Error approving comment
+        comments: Comments
+        says: says
+        permalink: permalink
+        no_comments: No comments
+        add_comment: Add your comments
+        name: Name
+        email: Email
+        website: Website
+        post_comment: Post comment
+        comment: Comment        
       rating:
         added: Rate added
         already_rated: You've already rated this item
@@ -33,5 +43,3 @@ en:
           created_at: Created at
           url: URL
           resource: Resource
-          
-      

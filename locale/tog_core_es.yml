@@ -14,6 +14,16 @@ es:
         error_commenting: Error al guardar tu comentario
         error_removing: Error al eliminar el comentario
         error_approving: Error al aprobar el comentario
+        comments: Comentarios
+        says: dice
+        permalink: enlace permanente
+        no_comments: No hay comentarios
+        add_comment: Añade un comentario
+        name: Nombre
+        email: Email
+        website: Website
+        post_comment: Enviar comentario
+        comment: Comentario        
       rating:
         added: Valoración añadida
         already_rated: Ya has valroado esta entrada
