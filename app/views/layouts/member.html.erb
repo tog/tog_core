@@ -27,69 +27,58 @@
 
 <script type="text/javascript">
 // <![CDATA[
-    if(navigator.userAgent.indexOf('Mac') != -1) document.write ('<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/mac.css" />');
+  if(navigator.userAgent.indexOf('Mac') != -1) document.write ('<link rel="stylesheet" type="text/css" media="screen" href="/tog_core/stylesheets/mac.css" />');
 // ]]>
 </script>
 
 <%= inject_js %>
 <%= inject_css %>
 
-
 <link rel="start" type="text/html" href="/" title="Página de inicio" />
 
 </head>
 
 <body>
-    <div id="container">
+  <div id="container">
+    <div id="header" class="clearfix">
+      <div id="header_content">
+        <h1 id="logo"><a href="/"><img src="/tog_core/images/template/logo.gif" alt="<%=config['plugins.tog_core.site.name']%>" /></a><br />Member's site</h1>
 
-        <div id="header" class="clearfix">
-            <div id="header_content">
-                <h1 id="logo"><a href="/"><img src="/tog_core/images/template/logo.gif" alt="<%=config['plugins.tog_core.site.name']%>" /></a><br />Member's site</h1>
+        <div id="header_options">
+          <%= render :partial => "shared/header_options" %>
+        </div> <!-- /#header_options -->
 
-                <div id="header_options">
-                    <ul>
-                      <li>Hello <%=current_user.login%></li>
-                      <li><a href="/member/account">Account</a></li>
-                      <li><%= link_to 'Dashboard', member_dashboard_path%></li>
-                      <li class="last"><a href="/logout">Log-out</a></li>
-                    </ul>
-                </div> <!-- /#header_options -->
+        <div id="menu" class="clearfix">
+          <ul>
+            <%= links_for_navigation :member %>
+          </ul>
+        </div>  <!-- #menu -->
 
+        <div id="header_search">
+          <%= render :partial => "shared/search_form" %>
+        </div> <!-- /#header_search -->
 
-                <div id="menu" class="clearfix">
-                        <ul>
-                          <%=links_for_navigation :member %>
-                        </ul>
-                </div>  <!-- #menu -->
+      </div> <!-- /#header_content -->
+    </div>  <!-- /#header -->
 
-                <div id="header_search">
-                  <%= render :partial => "shared/search_form" %>
-                </div> <!-- /#header_search -->
+    <div id="pagebody">
 
-            </div> <!-- /#header_content -->
-        </div>  <!-- /#header -->
+      <%= render_flash_messages %>
 
-        <div id="pagebody">
+      <div class="<%= columns_distribution %> clearfix">
+        <div class="left_col">
+          <%= yield %>
+        </div> <!-- /.left_col -->
+        
+        <div class="right_col">
+          <%= yield :sidebar %>
+        </div> <!-- /.right_col -->
+      </div> <!-- /.col_60_40 -->
 
-            <%= render_flash_messages %>
+    </div><!-- /#pagebody -->
 
-            <div class="<%= columns_distribution %> clearfix">
-              <div class="left_col">
+    <%= render :partial => "shared/footer" %>
 
-                <%= yield %>
-
-              </div> <!-- /.left_col -->
-              <div class="right_col">
-
-                <%= yield :sidebar %>
-
-              </div> <!-- /.right_col -->
-            </div> <!-- /.col_60_40 -->
-
-        </div><!-- /#pagebody -->
-
-        <%= render :partial => "shared/footer" %>
-
-    </div> <!-- #container -->
+  </div> <!-- #container -->
 </body>
 </html>
