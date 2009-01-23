@@ -17,7 +17,8 @@ class CommentsControllerTest < ActionController::TestCase
                                   :owner => @owner, 
                                   :new_record? => false,
                                   :comments => Comment, 
-                                  :title_for_comment =>"The commentable title"})
+                                  :title_for_comment =>"The commentable title",
+                                  :class => CommentableModel})
       @commentable_model_1.class.stubs(:base_class).returns(CommentableModel)
       @commentable_model_1.class.stubs(:find).returns(@commentable_model_1)
 
