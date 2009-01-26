@@ -27,6 +27,8 @@ en:
         added: Rate added
         already_rated: You've already rated this item
         error: Error while saving your rate
+      abuses:
+        report_abuse: Report abuse
     admin:
       configuration:
         title: Site configuration
