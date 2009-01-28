@@ -12,7 +12,7 @@ class SearchControllerTest < ActionController::TestCase
       end
       # Trigger pagination using a collection bigger than per_page option
       @matches = [@match,@match].paginate :per_page => 1 
-      Tog::Search.stubs(:search).with(@term).returns(@matches)
+      Tog::Search.stubs(:search).with(@term, {}, {:page => '1'}).returns(@matches)
       get :search, :global_search_field => @term
     end
 
