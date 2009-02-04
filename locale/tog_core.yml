@@ -2,7 +2,7 @@
 en:
   tog_core:
     plugin_name: Core
-    plugin_description: tog's core plugin    
+    plugin_description: tog's core plugin
     site:
       comment:
         added: Comment added
@@ -30,12 +30,15 @@ en:
       abuses:
         report_abuse: Report abuse
     admin:
+      dashboard:
+          title: Administration 
       configuration:
         title: Site configuration
         update: Update configuration
       abuses:
         title: Reported abuses
         confirm: Confirm
+        confirmed: Abuse confirmed. Contact user and request him to remove that content
         model:
           abuse: Abuse
           subject: Subject

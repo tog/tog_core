@@ -30,12 +30,15 @@ es:
       abuses:
         report_abuse: Reportar abuso       
     admin:
+      dashboard:
+        title: Administración  
       configuration:
         title: Configuración del sitio
         update: Actualizar
       abuses:
         title: Abusos denunciados
         confirm: Confirmar
+        confirmed: Abuso confirmado. Contacte al usuario y solicítele que elimine dicho contenido        
         model:
           abuse: Abuso
           subject: Asunto
