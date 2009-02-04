@@ -25,9 +25,9 @@ module InterfaceHelper
   
   def nav_link_to(tab)
     if tab.include_url?(request.request_uri)
-      content_tag(:li, %{#{link_to tab.name, tab.url} #{sub_nav_links_to(tab.items)}}, :class=>"on")
+      content_tag(:li, %{#{link_to I18n.t(tab.key), tab.url}#{sub_nav_links_to(tab.items)}}, :class=>"on")
     else
-      content_tag(:li, link_to(tab.name, tab.url))
+      content_tag(:li, link_to(I18n.t(tab.key), tab.url))
     end
   end
   
@@ -35,7 +35,7 @@ module InterfaceHelper
     unless tabs.empty?
       content_tag :ul do
         tabs.collect do |t|
-          %{<li #{"class=\"on\"" if current_url?(t[1])}>#{ link_to t[0], t[1]}</li>}
+          %{<li#{" class=\"on\"" if current_url?(t[1])}>#{ link_to I18n.t(t[0]), t[1]}</li>}
         end
       end
     end

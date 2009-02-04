@@ -1,5 +1,15 @@
-# {{xxx}}
 es:
+  interface:
+    admin:
+      home: Inicio
+      manage: Gestionar
+      manage_items:
+        configuration: Configuración
+        abuses: Abusos
+    member:
+      home: Inicio
+    site:
+      home: Inicio
   tog_core:
     plugin_name: Core
     plugin_description: Plugin principal de tog  

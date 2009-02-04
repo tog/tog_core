@@ -1,5 +1,6 @@
 Edge
 ----
+* Ticket #118. i18n in navigation tabs
 * Ticket #112. Edit profile in a fresh installation
 
 0.4.0
