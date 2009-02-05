@@ -26,9 +26,8 @@ class CommentsControllerTest < ActionController::TestCase
       Comment.any_instance.stubs(:commentable_owner_email).returns(@owner.email)
 
     end
+
     [:get, :post].each {|verb|
-      should_route verb, "/comments/1/approve", :controller => :comments, :action => :approve, :id => 1
-      should_route verb, "/comments/1/remove", :controller => :comments, :action => :remove, :id => 1
       should_route verb, "/comments", :controller => :comments, :action => :create
     }
     

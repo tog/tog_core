@@ -1,4 +1,6 @@
 Factory.define :comment do |c|
+  c.title 'New comment'
+  c.comment 'bla, bla, bla...'
 end
 Factory.define :user do |u|
   u.salt '7e3041ebc2fc05a40c60028e2c4901a81035d3cd'
