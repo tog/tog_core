@@ -6,7 +6,7 @@
 #   Tog::Search.sources << "User"
 #   @results = Tog::Search.search("joe-theplumber") # the @results instance will be paginated
 #
-# The modules used as +sources+ should implement a class method called site_search(query, search_options={}) and
+# The modules used as +sources+ should implement a class method called site_search(query, options={}) and
 # should return an +Array+ instance.
 module Search
 
@@ -22,22 +22,34 @@ module Search
   #
   # ==== Attributes
   #
-  # * <tt>:search_options</tt> - search options.
+  # * <tt>:options</tt> - search options.
   # * <tt>:paginate_options</tt> - The same options allowed for the +paginate+ method provided by will_paginate
   #
-  def self.search(query, search_options = {}, paginate_options = {})
+  # == Filter conditions
+  #
+  # Search may be limited to specific sources by declaring the sources to
+  # include or exclude. Both options accept single sources
+  # (<tt>:only => "Model1"</tt>) or arrays of sources
+  # (<tt>:except => ["Model1", "Model2"]</tt>).
+  #
+  #  Tog::Search.search(term, :only => ["User","Course"])
+  #  Tog::Search.search(term, :except => "ClubHouse")
+  
+  def self.search(query, options = {}, paginate_options = {})
     paginate_options.reverse_merge! :per_page => Tog::Config['plugins.tog_core.pagination_size']
     results = []
     sources.uniq.flatten.each{|name|
       begin
         source = name.constantize
         if source.respond_to?(:site_search)
-          results << source.site_search(query, search_options)
+          if included_in_search?(name, options)
+            results << source.site_search(query, options) 
+          end
         else
           RAILS_DEFAULT_LOGGER.warn(<<-WARNING
 
 **************************************************************************************************************************************************
-SEARCH WARNING: The source #{source} should implement a ´self.site_search(query, search_options={})´ method to be available on site-wide searches.
+SEARCH WARNING: The source #{source} should implement a ´self.site_search(query, options={})´ method to be available on site-wide searches.
 **************************************************************************************************************************************************
 
           WARNING
@@ -58,5 +70,17 @@ SEARCH ERROR: The source #{name} can't be constantized. Double-check it and make
 
     }
     results.flatten.paginate(paginate_options)
+  end
+  
+  protected 
+  
+  def self.included_in_search?(source, options)
+    if options[:only]
+      options[:only].include?(source)
+    elsif options[:except]
+      !options[:except].include?(source)
+    else
+      true
+    end
   end
 end
