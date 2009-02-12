@@ -1,5 +1,6 @@
 Edge
 ----
+* New Tog::Deprecation module.
 * Ticket #105. Comments approbe and delete should be in member/comments_controller
 * Ticket #118. i18n in navigation tabs
 * Ticket #112. Edit profile in a fresh installation
