@@ -5,6 +5,7 @@ module CoreHelper
   include UsersHelper
   include SearchHelper
   include RatesHelper
+  include WillPaginate::ViewHelpers  
   
   def config
     Tog::Config
@@ -61,4 +62,12 @@ module CoreHelper
       end
     }
   end
+  
+  
+
+  def will_paginate_with_i18n(collection, options = {})
+    will_paginate_without_i18n(collection, options.merge(:previous_label => I18n.t("will_paginate.previous"), :next_label => I18n.t("will_paginate.next") ))
+  end
+  alias_method_chain :will_paginate, :i18n
+  
 end

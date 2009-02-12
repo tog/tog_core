@@ -1,4 +1,7 @@
 en:
+  will_paginate:
+    previous: "« Previous"
+    next: "Next »"
   interface:
     admin:
       home: Home
