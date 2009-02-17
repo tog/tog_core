@@ -1,5 +1,8 @@
 Edge
 ----
+
+0.4.2
+----
 * Ticket #129.  i18n patch for will_paginate helper. This enable translated pagination by default in every tog based app.
 * New Tog::Deprecation module.
 * Ticket #105. Comments approbe and delete should be in member/comments_controller
