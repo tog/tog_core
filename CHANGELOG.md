@@ -1,6 +1,9 @@
 Edge
 ----
 
+0.4.3
+----
+
 0.4.2
 ----
 * Ticket #129.  i18n patch for will_paginate helper. This enable translated pagination by default in every tog based app.
