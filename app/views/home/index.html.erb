@@ -1,17 +1,17 @@
 <div class="portletK" id="portlet_splashHome">
-  <h2><span>toginstalllation.com</span></h2>
+  <h2><span><%=config['plugins.tog_core.site.name']%></span></h2>
   <div class="portlet_content">
     <p>
-      Welcome to toginstallation.com, a tog powered social network.<br />
-      In toginstallation.com you would be able to:
+      <%= I18n.t("tog_core.views.home.index.welcome_to", :site_name => config['plugins.tog_core.site.name']) %>.<br />
+      <%= I18n.t("tog_core.views.home.index.you_would_be_able_to") %>:
     </p>
     <ul>
-      <li>Create your own profile</li>
-      <li>Find your friends and colleagues.</li>
-      <li>Create and join groups of interest.</li>
-      <li>And enjoy: photo &amp; video sharing, blogs system, forums, and many others extensions.</li>
+      <li><%= I18n.t("tog_core.views.home.index.create_your_own_profile") %></li>
+      <li><%= I18n.t("tog_core.views.home.index.find_your_friends_and_colleagues") %>.</li>
+      <li><%= I18n.t("tog_core.views.home.index.create_and_join_groups_of_interest") %>.</li>
+      <li><%= I18n.t("tog_core.views.home.index.and_enjoy_more") %></li>
     </ul>
-    <div class="action"><a href="/signup"><strong>Sign up now!</strong></a></div>
+    <div class="action"><a href="/signup"><strong><%= I18n.t("tog_core.views.home.index.sign_up_now") %></strong></a></div>
   </div>
 </div>
 <br/>
@@ -19,7 +19,7 @@
 
         <div class="left_col">
             <div class="portlet portletG" id="portlet_featuredUsers">
-                <h2><span>Featured Users</span></h2>
+                <h2><span><%= I18n.t("tog_core.views.home.index.featured_users") %></span></h2>
                 <div class="portlet_content">
                     <ul class="clearfix">
                       <% last_users.each do |user|%>
@@ -32,7 +32,7 @@
 
         <div class="right_col">
              <div class="portlet portletH" id="portlet_groups">
-                <h2><span>Groups</span></h2>
+                <h2><span><%= I18n.t("tog_core.views.home.index.groups") %></span></h2>
                 <div class="portlet_content">
                     <ul>
 	                    <% last_groups.each do |group| %>
@@ -42,7 +42,7 @@
 	                            <div class="text">
 	                                <%=group.description%>
 	                            </div>
-	                            <div class="members"><%= link_to "<strong>#{group.members.size} members</strong>", group_path(group) %><a href="#"></a></div>
+	                            <div class="members"><a href="#"></a></div>
 	                        </li>
                         <%end %>
                     </ul>
@@ -61,7 +61,7 @@
 
 
    <div class="portlet portletI" id="potlet_publicContinuum">
-     <h2><span>The public continuum...</span></h2>
+     <h2><span><%= I18n.t("tog_core.views.home.index.the_public_continuum") %>...</span></h2>
      <div class="portlet_content">
        <ul>
          <%= public_continuum(10) %>
@@ -72,30 +72,30 @@
    <br />
 
     <div class="portlet portletJ" id="portlet_pluginsTog">
-        <h2><span>Discover more plugins for tog </span></h2>
+        <h2><span><%= I18n.t("tog_core.views.home.index.discover_more_plugins_for_tog") %> </span></h2>
         <div class="portlet_content">
             <ul>
                 <li class="clearfix">
                     <div class="image"><img src="/tog_core/images/promotion.png" alt="" /></div>
                     <div class="title">Picto</div>
                     <div class="text">
-                        Picto is a plugin for photo management and sharing between users of your social network.
+                        <%= I18n.t("tog_core.views.home.index.picto_explanation") %>
                     </div>
-                    <div class="more"><a href="http://www.toghq.com/tog_plugins/4-tog_picto"><strong>See more »</strong></a></div>
+                    <div class="more"><a href="http://www.toghq.com/tog_plugins/4-tog_picto"><strong><%= I18n.t("tog_core.views.home.index.see_more") %> »</strong></a></div>
                 </li>
                 <li class="clearfix">
                     <div class="title">Vault</div>
                     <div class="text">
-                        A small CMS for your website static pages!
+                        <%= I18n.t("tog_core.views.home.index.vault_explanation") %>
                     </div>
-                    <div class="more"><a href="http://www.toghq.com/tog_plugins/7-tog_vault"><strong>See more »</strong></a></div>
+                    <div class="more"><a href="http://www.toghq.com/tog_plugins/7-tog_vault"><strong><%= I18n.t("tog_core.views.home.index.see_more") %> »</strong></a></div>
                 </li>
                 <li class="last clearfix">
                     <div class="title">Conversatio</div>
                     <div class="text">
-                        A simple blog system.
+                        <%= I18n.t("tog_core.views.home.index.conversatio_explanation") %>
                     </div>
-                    <div class="more"><a href="http://www.toghq.com/tog_plugins/2-tog_conversatio"><strong>See more »</strong></a></div>
+                    <div class="more"><a href="http://www.toghq.com/tog_plugins/2-tog_conversatio"><strong><%= I18n.t("tog_core.views.home.index.see_more") %> »</strong></a></div>
                 </li>
             </ul>
         </div>

@@ -60,3 +60,21 @@ en:
           created_at: Created at
           url: URL
           resource: Resource
+    views:
+      home:
+        index:
+          welcome_to: Welcome to {{site_name}}, a tog powered social network.
+          you_would_be_able_to: In this site you would be able to
+          create_your_own_profile: Create your own profile.
+          find_your_friends_and_colleagues: Find your friends and colleagues.
+          create_and_join_groups_of_interest: Create and join groups of interest.
+          and_enjoy_more: "And enjoy: photo &amp; video sharing, blogs system, forums, and many others extensions."
+          sign_up_now: Sign up now!
+          featured_users: Featured Users
+          groups: Groups
+          the_public_continuum: The public continuum...
+          discover_more_plugins_for_tog: Discover more plugins for tog 
+          picto_explanation: Picto is a plugin for photo management and sharing between users of your social network.
+          vault_explanation: A small CMS for your website static pages!
+          conversatio_explanation: A simple blog system.
+          see_more: See more

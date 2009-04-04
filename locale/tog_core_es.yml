@@ -60,3 +60,21 @@ es:
           created_at: Creado el
           url: URL
           resource: Recurso
+    views:
+      home:
+        index:
+          welcome_to: Bienvenido a {{site_name}}, una red social basada en tog.
+          you_would_be_able_to: En este sitio podrás
+          create_your_own_profile: Crear tu propio perfíl.
+          find_your_friends_and_colleagues: Encontrar a tus amigos y colegas.
+          create_and_join_groups_of_interest: Crear y unirte a grupos de interés.
+          and_enjoy_more: "Y disfrutar de: compartir videos y fotos, un sistema de blogs, foros, y muchas más extensiones."
+          sign_up_now: ¡Registrate ahora!
+          featured_users: Usuarios destacados
+          groups: Grupos
+          the_public_continuum: El muro público...
+          discover_more_plugins_for_tog: Descubre más plugins de tog 
+          picto_explanation: Picto es un plugin para gestión de fotos y compartirlas entre los usuarios de tu red social.
+          vault_explanation: Un pequeño CMS para las páginas estáticas de tu sitio.
+          conversatio_explanation: Un sencillo sistema de blogs.
+          see_more: Ver más       
