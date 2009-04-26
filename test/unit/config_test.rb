@@ -5,7 +5,7 @@ class ConfigTest < Test::Unit::TestCase
 
     should "be clear after a purge" do
       Tog::Config.purge
-      assert_equal 0, Tog::Config.find(:all).size
+      assert_equal 0, Tog::Config.count
     end
 
     should "return nil for non existing keys" do
@@ -34,19 +34,25 @@ class ConfigTest < Test::Unit::TestCase
       }
     end
     
-    context "when setting a value for a key" do
+    context "when setting a value for a new key" do
       setup do
-        Tog::Config["key"] = "value"
+        @prev = Tog::Config.count
+        Tog::Config["newkey"] = "value"
       end
-      should_change "Tog::Config.count", :by => 1
+      should "add a pair key-value" do
+        assert @prev + 1, Tog::Config.count
+      end 
       
       context "if the key exists" do
         setup do 
           # set again the same key and check the 
           # total number of setting don't increase
-          Tog::Config["key"] = "new_value"
+          @prev = Tog::Config.count
+          Tog::Config["newkey"] = "new_value"
         end
-        should_not_change "Tog::Config.count"
+        should "not add a pair key-value" do
+          assert @prev, Tog::Config.count
+        end      
       end
       
     end
