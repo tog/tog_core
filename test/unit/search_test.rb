@@ -14,6 +14,7 @@ class SearchTest < Test::Unit::TestCase
         ModelType2.stubs(:site_search).with(@term, any_parameters).returns(@model2)
         Tog::Search.sources << "ModelType1"
         Tog::Search.sources << "ModelType2"
+        Tog::Config['plugins.tog_core.pagination_size'] = 10
       end
 
       should "manage the source list correctly" do
