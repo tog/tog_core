@@ -30,6 +30,18 @@ module Plugins
      Tog::Config["plugins.#{plugin}.#{settings.to_s}"]
    end
   end
+  
+  # Retrieve the observers defined on plugins initialization through the desert mechanism
+  def self.observers
+    RAILS_DEFAULT_LOGGER.warn(<<-WARNING
+
+    ***************************************************************************************************************************************************************************
+    CORE WARNING: Observers aren't supported anymore in tog's plugins. Please, substitute them with active record filters or move them to your app. Sorry for the inconvenience
+    ***************************************************************************************************************************************************************************
+
+    WARNING
+    )
+  end
 
   # Makes a given list of helper modules available to all the views in the app defining them
   # as helpers on ActionController::Base
