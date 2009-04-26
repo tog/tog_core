@@ -31,11 +31,6 @@ module Plugins
    end
   end
 
-  # Retrieve the observers defined on plugins initialization through the desert mechanism
-  def self.observers
-    Desert::Rails::Observer.observers
-  end
-
   # Makes a given list of helper modules available to all the views in the app defining them
   # as helpers on ActionController::Base
   def self.helpers(*args)
