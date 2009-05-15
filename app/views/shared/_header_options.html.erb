@@ -1,12 +1,12 @@
 <ul>
   <% if logged_in? -%>
-    <li>Hello <%= current_user.profile.full_name %></li>
-    <li><%= link_to "Account", member_my_account_path -%></li>
-    <li><%= link_to "My Profile", edit_member_profile_path(current_user.profile) -%></li>
-    <li><%= link_to 'Dashboard', member_dashboard_path -%></li>
-    <li class="last"><%= link_to 'Log-out', logout_path -%></li>
+    <li><%= I18n.t("tog_core.views.shared.header_options.greeting")%> <%= current_user.profile.full_name %></li>
+    <li><%= link_to I18n.t("tog_core.views.shared.header_options.account"), member_my_account_path -%></li>
+    <li><%= link_to I18n.t("tog_core.views.shared.header_options.my_profile"), edit_member_profile_path(current_user.profile) -%></li>
+    <li><%= link_to I18n.t("tog_core.views.shared.header_options.dashboard"), member_dashboard_path -%></li>
+    <li class="last"><%= link_to I18n.t("tog_core.views.shared.header_options.logout"), logout_path -%></li>
   <% else -%>
-    <li><%= link_to 'Sign up', signup_path -%></li>
-    <li class="last"><%= link_to 'Log-in', login_path -%></li>
+    <li><%= link_to I18n.t("tog_core.views.shared.header_options.sign_up"), signup_path -%></li>
+    <li class="last"><%= link_to I18n.t("tog_core.views.shared.header_options.login"), login_path -%></li>
   <% end -%>
 </ul>

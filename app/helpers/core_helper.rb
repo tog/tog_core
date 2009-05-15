@@ -63,11 +63,21 @@ module CoreHelper
     }
   end
   
-  
-
   def will_paginate_with_i18n(collection, options = {})
     will_paginate_without_i18n(collection, options.merge(:previous_label => I18n.t("will_paginate.previous"), :next_label => I18n.t("will_paginate.next") ))
   end
-  alias_method_chain :will_paginate, :i18n
+  alias_method_chain :will_paginate, :i18n  
+  
+  def page_entries_info(collection, options = {})
+      entry_name = options[:entry_name] ||
+                    (collection.empty?? 'entry' : collection.first.class.human_name)
+      
+      I18n.t("will_paginate.page_entries_info",
+          :count => collection.size,
+          :entry_name => (collection.size == 1) ? entry_name : entry_name.pluralize,
+          :start => collection.offset.succ,
+          :end => collection.offset + collection.size,
+          :total => collection.total_entries)
+    end
   
 end

@@ -1,4 +1,4 @@
 <div id="footer" class="clearfix">
   <span class="copyright"><strong><%=config['plugins.tog_core.site.name']%> © <%=Time.now.year%></strong></span>
-  <span class="links"><%= link_to "About #{config['plugins.tog_core.site.name']}", "http://www.toghq.com" %></span>
+  <span class="links"><%= link_to I18n.t('tog_core.views.shared.anon_footer.about', :site => config['plugins.tog_core.site.name']), "http://www.toghq.com" %></span>
 </div>  <!-- /#footer -->

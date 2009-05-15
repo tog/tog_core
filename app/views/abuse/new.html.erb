@@ -4,10 +4,10 @@
   <%= f.hidden_field :resource_id %>
 
   <fieldset>
-    <legend>Your Report</legend>
+    <legend><%= I18n.t('tog_core.views.abuse.new.your_report') %></legend>
     <div class="fields">
       <p>
-        <label for="abuse_email">Email</label>
+        <label for="abuse_email"><%=I18n.t("tog_core.admin.abuses.model.email")%></label>
         <% if logged_in? -%>
           <%= current_user.email%>
           <%= f.hidden_field :email, :value => current_user.email %>
@@ -16,23 +16,23 @@
         <% end -%>
       </p>
       <p>
-        <label for="abuse_subject">Subject</label>
+        <label for="abuse_subject"><%=I18n.t("tog_core.admin.abuses.model.subject")%></label>
          <%= f.text_field :title, :class=> "fieldbox wide" %>
-         <span class="helpinfo">e.g. This content is a phishing attempt</span>
+         <span class="helpinfo"><%=I18n.t("tog_core.admin.abuses.model.subject_help")%></span>
       </p>
       <p>
-        <label for="user_password_confirmation">Description</label>
+        <label for="user_password_confirmation"><%=I18n.t("tog_core.admin.abuses.model.description")%></label>
         <%= f.text_area :description, :class=>"fieldbox wide" %>
         <br />
-        <span class="helpinfo">Be sure to include links to relevant content where appropriate and explain your concern with as much detail as possible.</span>
+        <span class="helpinfo"><%=I18n.t("tog_core.admin.abuses.model.description_help")%></span>
       </p>
     </div>
   </fieldset>
   <br />
 
   <div class="actions">
-    <%= submit_tag 'Submit report', {:accesskey => "s", :class=>"button mainaction"} %>
-    <p>Or, cancel this and <%= link_to "return to the page you were just looking at.", @abuse.referer %></p>
+    <%= submit_tag I18n.t('tog_core.views.abuse.new.submit_report'), {:accesskey => "s", :class=>"button mainaction"} %>
+    <p><%= I18n.t('tog_core.views.abuse.new.cancel') %> <%= link_to I18n.t('tog_core.views.abuse.new.return'), @abuse.referer %></p>
   </div>
 
 

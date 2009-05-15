@@ -1,12 +1,11 @@
-Matching results for <strong>'<%= @term %>'</strong>: 
-
+<%= I18n.t('tog_core.views.search.search.title', :term => @term) %>
 <ul>
 <% if !@matches.blank? %>
   <% for match in @matches %>
     <li><%= render_match_partial match %></li>
   <% end %>
 <% else %>
-  <li>No matching results.</li>
+  <li><%= I18n.t('tog_core.views.search.search.not_found') %></li>
 <% end %>
 </ul>
 <%= will_paginate @matches %>

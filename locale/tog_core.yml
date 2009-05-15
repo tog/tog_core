@@ -2,6 +2,7 @@ en:
   will_paginate:
     previous: "« Previous"
     next: "Next »"
+    page_entries_info: Displaying {{count}} {{entry_name}} {{start}} {{end}} {{total}}
   interface:
     admin:
       home: Home
@@ -55,7 +56,9 @@ en:
         model:
           abuse: Abuse
           subject: Subject
+          subject_help: e.g. This content is a phishing attempt
           description: Description
+          description_help: Be sure to include links to relevant content where appropriate and explain your concern with as much detail as possible.
           email: Email
           created_at: Created at
           url: URL
@@ -78,3 +81,46 @@ en:
           vault_explanation: A small CMS for your website static pages!
           conversatio_explanation: A simple blog system.
           see_more: See more
+      abuse:
+        new:
+          your_report: Your Report
+          submit_report: Submit Report
+          cancel: Or, cancel this and
+          return: return to the page you were just looking at.
+      member:
+        dashboard:
+          index:
+            actions: Actions
+        site:
+          not_found:
+            error: error | not found
+      search:
+        search:
+          title: Matching results for <strong>'{{term}}'</strong>
+          not_found: No matching results.
+      shared:
+        anon_footer:
+          about: About {{site}}
+        header_options:
+          greeting:
+          account: Account
+          my_profile: My profile
+          dashboard: Dashboard
+          logout: Log-out
+          sign_up: Sign up
+          login: Log-in
+        logged_footer:
+          powered_by: This site is powered by the mighty <a href="http://www.toghq.com">Tog Platform</a>
+          groups: Groups
+          my_groups: My Groups
+          create_new_group: Create a New Group
+          messages: Messages
+          my_messages: My messages
+          write_a_message: Write a message
+          profile: Profile
+          my_account: My Account
+          edit_profile: Edit Profile
+        search_form:
+          label: Search
+          textfield: search...
+          submit: GO
