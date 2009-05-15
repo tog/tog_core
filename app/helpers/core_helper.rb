@@ -70,7 +70,7 @@ module CoreHelper
   
   def page_entries_info(collection, options = {})
       entry_name = options[:entry_name] ||
-                    (collection.empty?? 'entry' : collection.first.class.human_name)
+                    (collection.empty?? I18n.t("will_paginate.entry_name") : collection.first.class.human_name)
       
       I18n.t("will_paginate.page_entries_info",
           :count => collection.size,

@@ -2,7 +2,8 @@ en:
   will_paginate:
     previous: "« Previous"
     next: "Next »"
-    page_entries_info: Displaying {{count}} {{entry_name}} {{start}} {{end}} {{total}}
+    page_entries_info: Displaying {{count}} {{entry_name}} from {{start}} to {{end}} of {{total}}
+    entry_name: Entry
   interface:
     admin:
       home: Home
