@@ -33,9 +33,9 @@ module UrlWriterRetardaseInhibitor
     def self.included(am)
       #am.send(:include, ::ActionController::UrlWriter)
       ::ActionMailer::Base.module_eval do
-        default_url_options[:host] = Tog::Plugins.settings :tog_core, 'host.name'
-        default_url_options[:port] = Tog::Plugins.settings :tog_core, 'host.port'
-        default_url_options[:protocol] = 'http'
+        default_url_options[:host] ||= Tog::Plugins.settings :tog_core, 'host.name'
+        default_url_options[:port] ||= Tog::Plugins.settings :tog_core, 'host.port'
+        default_url_options[:protocol] ||= 'http'
       end
     end
   end
