@@ -20,10 +20,10 @@ module S3
     {:access_key_id => access_key, :secret_access_key => secret_access_key}
   end
   def self.access_key
-    Tog::Config['plugins.tog_core.storage.s3.access_key_id'] || warn("S³ WARNING: Put your access key id on Tog::Config['plugins.tog_core.s3.access_key_id']")
+    Tog::Config['plugins.tog_core.storage.s3.access_key_id'] || warn("S³ WARNING: Put your access key id on Tog::Config['plugins.tog_core.storage.s3.access_key_id']")
   end
   def self.secret_access_key
-    Tog::Config['plugins.tog_core.storage.s3.secret_access_key'] || warn("S³ WARNING: Put your secret access key on Tog::Config['plugins.tog_core.s3.secret_access_key']")
+    Tog::Config['plugins.tog_core.storage.s3.secret_access_key'] || warn("S³ WARNING: Put your secret access key on Tog::Config['plugins.tog_core.storage.s3.secret_access_key']")
   end
 
   def self.warn(text)
