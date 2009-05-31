@@ -7,7 +7,9 @@ module S3
   end
   
   def self.options_for_paperclip
-    {:storage => "s3", :s3_credentials => credentials, :path => path_for_files, :bucket => default_bucket}
+    {:storage => "s3", :s3_credentials => credentials, :path => path_for_files, 
+      :bucket => default_bucket,
+      :url => url}
   end
   
   def self.path_for_files
@@ -24,6 +26,9 @@ module S3
   end
   def self.secret_access_key
     Tog::Config['plugins.tog_core.storage.s3.secret_access_key'] || warn("S³ WARNING: Put your secret access key on Tog::Config['plugins.tog_core.storage.s3.secret_access_key']")
+  end
+  def self.url
+    Tog::Config['plugins.tog_core.storage.s3.url']
   end
 
   def self.warn(text)

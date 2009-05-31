@@ -33,6 +33,7 @@ Tog::Plugins.settings :tog_core,  'storage' => 'filesystem',
 # Comment out this lines to enable s3
 # Tog::Plugins.settings :tog_core,  'storage' => 's3',
 #                                   'storage.s3.path' => 'system/:class/:attachment/:id/:style_:basename.:extension',
+#                                   'storage.s3.url' => ":s3_domain_url",
 #                                   'storage.s3.bucket' => 'tog',
 #                                   'storage.s3.access_key_id' => 'YOUR_KEY_HERE',
 #                                   'storage.s3.secret_access_key' => 'YOUR_KEY_HERE'
