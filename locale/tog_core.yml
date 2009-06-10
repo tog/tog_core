@@ -44,6 +44,10 @@ en:
         error: Error while saving your rate
       abuses:
         report_abuse: Report abuse
+      tags:
+        tags: Tags
+        no_tags: There are no tags
+        tag_cloud: Tag cloud
     admin:
       dashboard:
           title: Administration 
@@ -103,7 +107,7 @@ en:
         anon_footer:
           about: About {{site}}
         header_options:
-          greeting:
+          greeting: Hello
           account: Account
           my_profile: My profile
           dashboard: Dashboard

@@ -42,6 +42,10 @@ es:
         error: Error al guardar tu valoración
       abuses:
         report_abuse: Reportar abuso       
+      tags:
+        tags: Etiquetas
+        no_tags: No tiene etiquetas. 
+        tag_cloud: Tag cloud
     admin:
       dashboard:
         title: Administración  
