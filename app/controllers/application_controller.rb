@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_javascripts_and_stylesheets
 
   def set_javascripts_and_stylesheets
-    @javascripts = %w(prototype effects dragdrop controls application)
+    @javascripts = ActionView::Helpers::AssetTagHelper::JAVASCRIPT_DEFAULT_SOURCES | %w(application)
     @stylesheets = %w()
     @feeds = %w()
   end
