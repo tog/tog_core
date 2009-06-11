@@ -4,6 +4,18 @@ Edge
 0.5.0
 ----
 
+* Admin views updated, so all views have the same look and feel
+* (almost) Full i18n (kudos to Andrei Erdoss)
+* Renamed application.rb to application_controller.rb (Rails 2.3 support)
+* Small changes to code and test (Rails 2.3 support, kudos to Andrei Erdoss)
+* Removed tog-desert gem, now using pivotal labs' official desert gem (desert 0.5 support)
+* Renamed routes.rb to desert_routes.rb (Rails 2.3 + desert 0.5 support)
+* Removed support for observers in plugins, was supported by tog-desert (desert 0.5 support)
+* Added port to mailer URL options (kudos to Balint Erdi)
+* Better support for Amazon S3 (kudos to Gaizka)
+* Support for jRails in order to use jQuery instead of Prototype (kudos to Richard Shank)
+
+
 0.4.4
 ----
 
