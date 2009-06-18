@@ -5,7 +5,9 @@ module CoreHelper
   include UsersHelper
   include SearchHelper
   include RatesHelper
-  include WillPaginate::ViewHelpers  
+  include WillPaginate::ViewHelpers 
+  include I18nHelper
+   
   
   def config
     Tog::Config

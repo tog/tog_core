@@ -3,6 +3,10 @@
 
 root :controller => "home"
 
+with_options(:controller => 'locale') do |l|
+  l.set_locale 'locale', :action => 'set'
+end
+
 with_options(:controller => 'search') do |search|
   search.do_search 'search', :action => 'search'
 end

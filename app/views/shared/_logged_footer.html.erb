@@ -23,6 +23,13 @@
           <li><%= link_to I18n.t("tog_core.views.shared.logged_footer.my_account"), member_my_account_path -%></li>
           <li><%= link_to I18n.t("tog_core.views.shared.logged_footer.edit_profile"), edit_member_profile_path(current_user.profile) -%></li>
         </ul>
+      </li> 
+      <li><%= I18n.t("tog_core.views.shared.logged_footer.locale")%>
+        <ul> 
+          <% supported_languages do |l| %>
+             <li><%= link_to l[:name], set_locale_path(:locale => l[:iso_639_1]) %></li>
+          <% end %>
+        </ul>
       </li>
     </ul>
   </div>
