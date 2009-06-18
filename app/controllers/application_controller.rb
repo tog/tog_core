@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include InternationalizationSystem
+  
   around_filter :retardase_inhibitor
   before_filter :set_javascripts_and_stylesheets
 
@@ -8,4 +10,9 @@ class ApplicationController < ActionController::Base
     @feeds = %w()
   end
   
+  before_filter :set_locale
+  def set_locale       
+    I18n.locale = current_user_locale
+    logger.debug "* Locale set to '#{I18n.locale}'"
+  end
 end
