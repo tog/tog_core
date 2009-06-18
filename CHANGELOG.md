@@ -1,6 +1,9 @@
 Edge
 ----
 
+0.5.1
+----
+
 * Added a new installer (kudos to the passenger guys for remember us that the command line can be a better place)
 * First language selector implementation (allow users to set the locale).
 
