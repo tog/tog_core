@@ -1,3 +1,5 @@
+TOG_RELEASE = "v0.5.0"
+
 module Colored
   extend self
   COLORS = { 'green'   => 32, 'yellow'  => 33,'blue'    => 34}
@@ -69,9 +71,9 @@ def install_require_gems
 end
 
 def install_tog_core_plugins    
-  quiet_git_install('tog_core', "git://github.com/tog/tog_core.git")
-  quiet_git_install('tog_social', "git://github.com/tog/tog_social.git")
-  quiet_git_install('tog_mail', "git://github.com/tog/tog_mail.git")
+  quiet_git_install('tog_core', "git://github.com/tog/tog_core.git", TOG_RELEASE)
+  quiet_git_install('tog_social', "git://github.com/tog/tog_social.git", TOG_RELEASE)
+  quiet_git_install('tog_mail', "git://github.com/tog/tog_mail.git", TOG_RELEASE)
 
   route "map.routes_from_plugin 'tog_core'"
   puts "* adding tog_core routes to host app... #{"added".green.bold}";
@@ -165,7 +167,7 @@ def install_tog_user_plugin
   if STDIN.gets.strip == ""
     silence!   
 
-    quiet_git_install('tog_user', "git://github.com/tog/tog_user.git")
+    quiet_git_install('tog_user', "git://github.com/tog/tog_user.git", TOG_RELEASE)
 
     route "map.routes_from_plugin 'tog_user'"
     puts "* adding routes to host app... #{"added".green.bold}";
@@ -258,10 +260,12 @@ def install_git_plugins(plugins)
   end                    
 end   
 
-def quiet_git_install(name, url)
+def quiet_git_install(name, url, tag=nil)
   print "* #{name}... "; 
   resolution = "installed".green
-    Open3.popen3("script/plugin install #{url}") { |stdin, stdout, stderr| 
+    command = "script/plugin install #{url}"
+    command << " -r 'tag #{tag}'" if tag
+    Open3.popen3(command) { |stdin, stdout, stderr| 
       stdout.each { |line| resolution = "already installed -> skipped".yellow if line =~ /already installed/; STDOUT.flush }
     }
   puts resolution.bold  
@@ -270,7 +274,7 @@ end
 
 silence!
 
-installation_step "Welcome to the Tog installer, v0.5.1" do
+installation_step "Welcome to the Tog installer #{TOG_RELEASE}" do
   introduction_banner
 end
 
@@ -329,6 +333,6 @@ installation_step "Updating the host app files..." do
   puts "* removing index.html... #{"done".green.bold}";
 end
 
-installation_step "Tog 0.5.1 installed" do
+installation_step "Tog #{TOG_RELEASE} installed" do
   congratulations_banner
 end
