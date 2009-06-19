@@ -48,10 +48,10 @@ String.send(:include, Colored)
 require 'open3'
 
 def silence!
-  Rails::Generator::Base.logger.quiet = true
+#  Rails::Generator::Base.logger.quiet = true
 end
 def verbum!
-  Rails::Generator::Base.logger.quiet = false
+#  Rails::Generator::Base.logger.quiet = false
 end
 
 def add_desert_require
@@ -205,7 +205,7 @@ Don't worry if anything goes wrong. This installer will advise you on how to
 solve any problems.
 
 Press Enter to continue, or Ctrl-C to abort.}  
-  gets
+STDIN.gets
 end    
 
 def tog_user_banner
@@ -322,7 +322,7 @@ end
 
 installation_step "Updating the host app files..." do
   add_desert_require
-  append_file 'Rakefile', "require 'tasks/tog'"
+  append_file 'Rakefile', "require 'tasks/tog'\n"
   puts "* including tog rake tasks... #{"done".green.bold}";
   
   rake "tog:plugins:copy_resources"
