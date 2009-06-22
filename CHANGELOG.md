@@ -1,6 +1,8 @@
 Edge
 ----
 
+* Added some missed keys in spanish locale
+
 0.5.1
 ----
 

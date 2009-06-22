@@ -2,6 +2,8 @@ es:
   will_paginate:
     previous: "« Anterior"
     next: "Siguiente »"
+    page_entries_info: Mostrando {{count}} {{entry_name}} {{start}} a {{end}} de {{total}}
+    entry_name: Entrada    
   interface:
     admin:
       home: Inicio
@@ -59,7 +61,9 @@ es:
         model:
           abuse: Abuso
           subject: Asunto
+          subject_help: p.e. Este contenido es un intento de phishing
           description: Descripción
+          description_help: Asegurate de incluir links a contenido relevante y de explicar tus argumentos tanto como puedas.
           email: Email
           created_at: Creado el
           url: URL
@@ -81,4 +85,47 @@ es:
           picto_explanation: Picto es un plugin para gestión de fotos y compartirlas entre los usuarios de tu red social.
           vault_explanation: Un pequeño CMS para las páginas estáticas de tu sitio.
           conversatio_explanation: Un sencillo sistema de blogs.
-          see_more: Ver más       
+          see_more: Ver más
+      abuse:
+        new:
+          your_report: Tu denuncia
+          submit_report: Enviar tu denuncia
+          cancel: O, cancelar y
+          return:volver al sitio dódne estabas.
+      member:
+        dashboard:
+          index:
+            actions: Acciones
+        site:
+          not_found:
+            error: Error | no encontrado
+      search:
+        search:
+          title: Resultados para <strong>'{{term}}'</strong>
+          not_found: No se encontrador coincidencias.
+      shared:
+        anon_footer:
+          about: Sobre {{site}}
+        header_options:
+          greeting: Hola
+          account: Cuenta
+          my_profile: Mi perfíl
+          dashboard: Dashboard
+          logout: Salir
+          sign_up: Registrarse
+          login: Login
+        logged_footer:
+          powered_by: Este sitio está creado con la increible <a href="http://www.toghq.com">Platforma Tog</a>
+          groups: Grupos
+          my_groups: Mis grupos
+          create_new_group: Crear un nuevo grupo
+          messages: Mensajes
+          my_messages: Mis mensajes
+          write_a_message: Enviar un mensaje
+          profile: Perfíl
+          my_account: Mi cuenta
+          edit_profile: Editar perfíl
+        search_form:
+          label: Buscar
+          textfield: buscar...
+          submit: IR         
