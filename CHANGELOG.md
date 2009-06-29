@@ -1,6 +1,9 @@
 Edge
 ----
 
+0.5.2
+----
+
 * Fixed #4. Misspelled name for I18nHelper. Thanks to Richard Shank andJavier Lafora 
 * Added some missed keys in spanish locale
 
