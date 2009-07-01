@@ -1,4 +1,4 @@
-TOG_RELEASE = "v0.5.1"
+TOG_RELEASE = "v0.5.2"
 
 module Colored
   extend self
