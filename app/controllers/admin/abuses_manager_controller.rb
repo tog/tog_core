@@ -9,6 +9,6 @@ class Admin::AbusesManagerController < Admin::BaseController
     @abuse = Abuse.find(params[:id])
     @abuse.confirm!
     flash[:ok] = I18n.t('tog_core.admin.abuses.confirmed')
-    redirect_to abuses_index_path
+    redirect_to admin_abuses_index_path
   end
 end

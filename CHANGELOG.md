@@ -1,6 +1,8 @@
 Edge
 ----
 
+* Fixed redirection after abuse confirmation (kudos to Arnau Sanchez)
+
 0.5.3
 ----
 
