@@ -1,6 +1,9 @@
 Edge
 ----
 
+* Added acts_as_shareable to installation template, used by tog_social
+* EDGE version installation installs EDGE versions of tog's core plugins
+
 0.5.4
 ----
 
@@ -12,7 +15,7 @@ Edge
 0.5.2
 ----
 
-* Fixed #4. Misspelled name for I18nHelper. Thanks to Richard Shank andJavier Lafora 
+* Fixed #4. Misspelled name for I18nHelper. Thanks to Richard Shank and Javier Lafora 
 * Added some missed keys in spanish locale
 
 0.5.1

@@ -1,4 +1,6 @@
-TOG_RELEASE = "v0.5.4"
+EDGE = "EDGE"
+TOG_RELEASE = EDGE
+#TOG_RELEASE = "v0.5.4"
 
 module Colored
   extend self
@@ -65,15 +67,15 @@ def install_require_gems
   gem 'desert', :version => '0.5.2', :lib => 'desert'
   gem 'mislav-will_paginate', :version => '~> 2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
   gem 'tog-tog', :version => '0.5', :lib => 'tog'
-  gem 'mocha'
+  gem 'mocha', :version => '0.9.7'
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   rake "gems:install", :sudo => true
 end
 
 def install_tog_core_plugins    
-  quiet_git_install('tog_core', "git://github.com/tog/tog_core.git", TOG_RELEASE)
-  quiet_git_install('tog_social', "git://github.com/tog/tog_social.git", TOG_RELEASE)
-  quiet_git_install('tog_mail', "git://github.com/tog/tog_mail.git", TOG_RELEASE)
+  quiet_git_install('tog_core', "git://github.com/tog/tog_core.git", TOG_RELEASE )
+  quiet_git_install('tog_social', "git://github.com/tog/tog_social.git", TOG_RELEASE )
+  quiet_git_install('tog_mail', "git://github.com/tog/tog_mail.git", TOG_RELEASE )
 
   route "map.routes_from_plugin 'tog_core'"
   puts "* adding tog_core routes to host app... #{"added".green.bold}";
@@ -144,6 +146,30 @@ def generate_acts_as_rateable_migration
   end
   }
   puts "* acts_as_rateable migration... #{"generated".green.bold}";
+end
+
+def generate_acts_as_shareable_migration
+  sleep 1 # Template runner is too fast and generate multiple migrations with the same number
+  file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_create_shares.rb",
+  %q{class CreateShares < ActiveRecord::Migration
+        def self.up
+          create_table :shares, :force => true do |t|
+            t.column :user_id,            :integer
+            t.column :shareable_type,     :string, :limit => 30
+            t.column :shareable_id,       :integer
+            t.column :shared_to_type,     :string, :limit => 30
+            t.column :shared_to_id,       :integer
+            t.column :created_at,         :datetime
+            t.column :updated_at,         :datetime
+          end
+        end
+  
+        def self.down
+          drop_table :shares
+        end
+  end
+  }
+  puts "* acts_as_shareable migration... #{"generated".green.bold}";
 end
 
 def generate_acts_as_abusable_migration
@@ -261,10 +287,10 @@ def install_git_plugins(plugins)
 end   
 
 def quiet_git_install(name, url, tag=nil)
-  print "* #{name}... "; 
+  print "* #{name} #{tag if tag}... "; 
   resolution = "installed".green
     command = "script/plugin install #{url}"
-    command << " -r 'tag #{tag}'" if tag
+    command << " -r 'tag #{tag}'" if tag && tag != EDGE 
     Open3.popen3(command) { |stdin, stdout, stderr| 
       stdout.each { |line| resolution = "already installed -> skipped".yellow if line =~ /already installed/; STDOUT.flush }
     }
@@ -293,11 +319,12 @@ installation_step "Installing plugin dependencies..." do
   
   install_git_plugins({
     'acts_as_taggable_on_steroids' => "git://github.com/jviney/acts_as_taggable_on_steroids.git",
-    'acts_as_rateable' => "git://github.com/andry1/acts_as_rateable.git",
-    'acts_as_abusable' => "git://github.com/linkingpaths/acts_as_abusable.git",
-    'acts_as_scribe'   => "git://github.com/linkingpaths/acts_as_scribe.git",
-    'paperclip' => "git://github.com/thoughtbot/paperclip.git",
-    'viking'    => "git://github.com/technoweenie/viking.git"
+    'acts_as_rateable'  => "git://github.com/andry1/acts_as_rateable.git",
+    'acts_as_abusable'  => "git://github.com/linkingpaths/acts_as_abusable.git",
+    'acts_as_scribe'    => "git://github.com/linkingpaths/acts_as_scribe.git",
+    'paperclip'         => "git://github.com/thoughtbot/paperclip.git",
+    'viking'            => "git://github.com/technoweenie/viking.git",
+    'acts_as_shareable' => "git://github.com/IamPersistent/acts_as_shareable.git"
   })
   
 end
@@ -308,6 +335,7 @@ installation_step "Generating dependencies migrations..." do
   generate_acts_as_abusable_migration
   generate_acts_as_taggable_migration
   generate_acts_as_scribe_migration
+  generate_acts_as_shareable_migration
 end    
 
 
