@@ -66,7 +66,7 @@ def install_require_gems
   
   gem 'desert', :version => '0.5.2', :lib => 'desert'
   gem 'mislav-will_paginate', :version => '~> 2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  gem 'tog-tog', :version => '0.5', :lib => 'tog'
+  gem 'tog-tog', :version => '>= 0.5', :lib => 'tog'
   gem 'mocha', :version => '0.9.7'
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   rake "gems:install", :sudo => true
