@@ -350,6 +350,7 @@ end
 
 installation_step "Updating the host app files..." do
   add_desert_require
+  environment( "config.reload_plugins = true if RAILS_ENV == 'development'" )
   append_file 'Rakefile', "require 'tasks/tog'\n"
   puts "* including tog rake tasks... #{"done".green.bold}";
   
