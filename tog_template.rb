@@ -64,10 +64,12 @@ end
 def install_require_gems
   run "gem sources -a http://gems.github.com"
   
-  gem 'desert', :version => '0.5.2', :lib => 'desert'
-  gem 'mislav-will_paginate', :version => '~> 2.3.6', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  gem 'tog-tog', :version => '>= 0.5', :lib => 'tog'
+  gem 'desert', :lib => 'desert', :version => '0.5.2'
+  gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~> 2.3.6'
+  gem 'tog-tog', :lib => 'tog', :version => '>= 0.5'
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
+  gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
+  
   rake "gems:install", :sudo => true
 end
 
@@ -102,28 +104,10 @@ def install_tog_core_plugins
   
 end
 
-def generate_acts_as_commentable_migration
-  sleep 1 # Template runner is too fast and generate multiple migrations with the same number
-  file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_acts_as_commentable.rb",
-  %q{class ActsAsCommentable < ActiveRecord::Migration
-    def self.up
-      create_table "comments", :force => true do |t|
-        t.column "title", :string, :limit => 50, :default => "" 
-        t.column "comment", :text, :default => "" 
-        t.column "created_at", :datetime, :null => false
-        t.column "commentable_id", :integer, :default => 0, :null => false
-        t.column "commentable_type", :string, :limit => 15, :default => "", :null => false
-        t.column "user_id", :integer, :default => 0, :null => false
-      end
-      add_index "comments", ["user_id"], :name => "fk_comments_user" 
-    end
 
-    def self.down
-      drop_table :comments
-    end
-  end
-  }   
-  puts "* acts_as_commentable migration... #{"generated".green.bold}";
+def install_acts_as_commentable
+  generate "comment" 
+  puts "* acts_as_commentable installed... #{"generated".green.bold}";
 end
 
 def generate_acts_as_rateable_migration
@@ -311,7 +295,6 @@ end
 installation_step "Installing plugin dependencies..." do
   
   install_svn_plugins({
-    'acts_as_commentable'    => "http://juixe.com/svn/acts_as_commentable",
     'acts_as_state_machine'  => "http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/trunk",
     'seo_urls'               => "http://svn.redshiftmedia.com/svn/plugins/seo_urls"
   })  
@@ -329,7 +312,7 @@ installation_step "Installing plugin dependencies..." do
 end
 
 installation_step "Generating dependencies migrations..." do     
-  generate_acts_as_commentable_migration
+  install_acts_as_commentable
   generate_acts_as_rateable_migration
   generate_acts_as_abusable_migration
   generate_acts_as_taggable_migration

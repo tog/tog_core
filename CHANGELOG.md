@@ -4,6 +4,7 @@ Edge
 * Added acts_as_shareable to installation template, used by tog_social
 * EDGE version installation installs EDGE versions of tog's core plugins
 * Added config.reload_plugins entry to development environment
+* acts_as_commentable is now installed as gem
 
 0.5.4
 ----

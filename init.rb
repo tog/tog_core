@@ -1,4 +1,3 @@
-require_plugin 'acts_as_commentable'
 require_plugin 'acts_as_scribe'
 require_plugin 'acts_as_taggable_on_steroids'
 require_plugin 'acts_as_abusable'
