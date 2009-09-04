@@ -8,7 +8,7 @@ class AbuseController < ApplicationController
   def create
     @abuse = Abuse.new(params[:abuse])
     @abuse.save!              
-    # todo Put flash message
+    flash[:ok] = I18n.t("tog_core.site.abuses.added")
     redirect_to @abuse.referer
   end
 end

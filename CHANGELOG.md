@@ -5,6 +5,8 @@ Edge
 * EDGE version installation installs EDGE versions of tog's core plugins
 * Added config.reload_plugins entry to development environment
 * acts_as_commentable is now installed as gem
+* Flash setted after abuse report (kudos to Andrei Erdoss)
+* Caching Tog::Config values
 
 0.5.4
 ----

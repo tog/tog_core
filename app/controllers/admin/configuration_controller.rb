@@ -8,7 +8,11 @@ class Admin::ConfigurationController < Admin::BaseController
     params[:config].each do |key, value|
       Tog::Config[key] = value
     end
-    flash[:ok] = "Configuration successfully changed."
+    flash[:ok] = I18n.t("tog_core.admin.configuration.changed")
+    
+    if Rails.configuration.action_controller.perform_caching == true
+      Rails.cache.delete('Tog::Config')
+    end    
     
     redirect_to :action => :index
   end

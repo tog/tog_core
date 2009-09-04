@@ -43,7 +43,8 @@ es:
         already_rated: Ya has valroado esta entrada
         error: Error al guardar tu valoración
       abuses:
-        report_abuse: Reportar abuso       
+        report_abuse: Notificar un abuso  
+        added: Gracias por ayudarnos a mentener el sitio limpio. La notificción de abuso ha sido guardada.     
       tags:
         tags: Etiquetas
         no_tags: No tiene etiquetas. 
@@ -54,6 +55,7 @@ es:
       configuration:
         title: Configuración del sitio
         update: Actualizar
+        changed: configuración actualizada con éxito.        
       abuses:
         title: Abusos denunciados
         confirm: Confirmar

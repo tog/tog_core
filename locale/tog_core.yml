@@ -44,6 +44,7 @@ en:
         error: Error while saving your rate
       abuses:
         report_abuse: Report abuse
+        added: Thanks for helping us keep the site clean. The abuse has been reported.
       tags:
         tags: Tags
         no_tags: There are no tags
@@ -54,6 +55,7 @@ en:
       configuration:
         title: Site configuration
         update: Update configuration
+        changed: Configuration successfully updated.
       abuses:
         title: Reported abuses
         confirm: Confirm

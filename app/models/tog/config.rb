@@ -10,23 +10,31 @@ module Tog
 
 
     class << self
+      
+      def get_value(key)
+        if table_exists?
+          if Rails.configuration.action_controller.perform_caching == true
+            Rails.cache.fetch('Tog::Config') { self.all }.select{|m| m.key == key}.first
+          else
+            find_by_key(key)
+          end
+        end
+      end
 
       def [](key)
-        pair = find_by_key(key) if table_exists?
+        pair = get_value(key)
         pair.value unless pair.nil?
       end
 
       def []=(key, value)
-        if table_exists?
-          pair = find_by_key(key)
-          unless pair
-            pair = new
-            pair.key, pair.value = key, value
-            pair.save
-          else
-            pair.value = value
-            pair.save
-          end
+        pair = get_value(key) 
+        unless pair
+          pair = new
+          pair.key, pair.value = key, value
+          pair.save
+        else
+          pair.value = value
+          pair.save
         end
         value
       end
@@ -47,9 +55,7 @@ module Tog
       end
 
       def init_with(key, value)
-        if table_exists?
-          pair = find_by_key(key)
-        end
+        pair = get_value(key) 
         self[key] = value if pair.nil?
       end
 
