@@ -36,6 +36,9 @@ module Tog
           pair.value = value
           pair.save
         end
+        if Rails.configuration.action_controller.perform_caching == true
+          Rails.cache.delete('Tog::Config')
+        end
         value
       end
 
