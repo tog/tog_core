@@ -8,7 +8,13 @@ class CommentsController < ApplicationController
     @comment.approved = !commentable.respond_to?("moderated") || !commentable.moderated || commentable.owner == current_user
 
     @comment.spam = Cerberus.check_spam(@comment, request)
-
+    
+    if params[:twitter] && current_user.service_provider.include?('twitter')
+      current_user.consumer_token.each do | token |
+        token.client.update params[:comment][:comment] if token.instance_of? TwitterToken
+      end
+    end
+    
     respond_to do |format|
       if @comment.save
         deliver_new_comment_notification(@comment, request.referer)

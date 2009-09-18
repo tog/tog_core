@@ -23,7 +23,7 @@
 </div> <!-- /#potlet_featuredPosts -->
 
 <h3><a name="reply"></a><%= I18n.t("tog_core.site.comment.add_comment")%></h3>
-<% form_for :comment, :url => comment_path do |f| -%>
+<% form_for :comment, :url => comment_path, :html => {:id=>'comment_input_form'} do |f| -%>
   <%= f.hidden_field :commentable_type, {:value => commentable.class.name} -%>
   <%= f.hidden_field :commentable_id, {:value => commentable.id} -%>
   <% unless logged_in? -%>
@@ -36,8 +36,16 @@
       <label for="comment_url"><%= I18n.t("tog_core.site.comment.website")%></label>
       <%= f.text_field :url, :class=>"fieldbox wide" %>
   <% end -%>
-  <label for="comment_comment"><%= I18n.t("tog_core.site.comment.comment")%></label>
-  <%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide fieldbox"} -%>
-  <br/>
-  <%= submit_tag I18n.t("tog_core.site.comment.post_comment"), {:accesskey => "s", :class=>"button mainaction"} %>
+  	<label for="comment_comment"><%= I18n.t("tog_core.site.comment.comment")%></label>
+
+	<% if current_user.service_provider.include? 'twitter' %> <!-- option only available for federated user logged in with Twitter account -->
+		<div style="float:right;">
+			<span id="character_counter" style="display:none;"> 140 </span> <!-- for Twitter like character counter javascript implementation -->
+			<span id="send_to_twitter_label">Send to Twitter (140 characters max.) </span><%= check_box_tag :twitter %>
+		</div>
+	<% end %>
+	
+  	<%= f.text_area :comment, {:rows=>6, :cols=>50, :class=>"editor wide fieldbox"} -%>
+  	<br/>
+  	<%= submit_tag I18n.t("tog_core.site.comment.post_comment"), {:accesskey => "s", :class=>"button mainaction"} %>
 <% end %>
