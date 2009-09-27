@@ -7,6 +7,8 @@ Edge
 * acts_as_commentable is now installed as gem
 * Flash setted after abuse report (kudos to Andrei Erdoss)
 * Caching Tog::Config values
+* Installation template now asks about installing gems as sudo
+* new generator for creating plugin's migrations, on installation and after updates
 
 0.5.4
 ----

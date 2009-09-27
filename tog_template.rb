@@ -70,7 +70,13 @@ def install_require_gems
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
   
-  rake "gems:install", :sudo => true
+  puts "\n"
+  if yes?("Install required gems as root? (y/n)")
+    rake "gems:install", :sudo => true
+  else
+    rake "gems:install", :sudo => false
+  end  
+  
 end
 
 def install_tog_core_plugins    
@@ -84,24 +90,9 @@ def install_tog_core_plugins
   puts "* adding tog_tog_social routes to host app... #{"added".green.bold}";
   route "map.routes_from_plugin 'tog_mail'"
   puts "* adding tog_mail routes to host app... #{"added".green.bold}";
-
-  file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_install_tog.rb",
-  %q{class InstallTog < ActiveRecord::Migration
-      def self.up
-        migrate_plugin "tog_core", 6
-        migrate_plugin "tog_social", 5
-        migrate_plugin "tog_mail", 2
-      end
-
-      def self.down
-        migrate_plugin "tog_mail", 0 
-        migrate_plugin "tog_social", 0 
-        migrate_plugin "tog_core", 0
-      end
-  end
-  }     
+    
+  generate "update_tog_migration"
   puts "* generating tog_core migration... #{"generated".green.bold}";
-  
 end
 
 
@@ -180,19 +171,6 @@ def install_tog_user_plugin
 
     route "map.routes_from_plugin 'tog_user'"
     puts "* adding routes to host app... #{"added".green.bold}";
-    
-    file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_install_tog_user.rb",
-    %q{class InstallTogUser < ActiveRecord::Migration
-        def self.up
-          migrate_plugin "tog_user", 1
-        end
-
-        def self.down
-          migrate_plugin "tog_user", 0 
-        end
-    end
-    }
-    puts "* generating migration... #{"generated".green.bold}";
   else
     silence!  
   end
@@ -231,7 +209,11 @@ end
 
 def gem_banner
   puts <<-eos
-We try to install the required gems as superuser so you could be asked to enter your password.
+
+We are going to install the required gems. This could be done as super user in a host-wide manner of just for your user. 
+If install this gem as superuser you could be asked to enter your password.
+
+Note: if you are using Windows, please, answer 'no'.
 
 eos
 end
