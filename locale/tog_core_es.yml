@@ -40,7 +40,7 @@ es:
       rating:
         rating: Valoración        
         added: Valoración añadida
-        already_rated: Ya has valroado esta entrada
+        already_rated: Ya has valorado esta entrada
         error: Error al guardar tu valoración
       abuses:
         report_abuse: Notificar un abuso  
