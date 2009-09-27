@@ -69,7 +69,8 @@ def install_require_gems
   gem 'tog-tog', :lib => 'tog', :version => '>= 0.5'
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
-  
+  gem "mreinsch-acts_as_rateable", :lib => "acts_as_rateable", :version => '2.0.1'
+      
   puts "\n"
   if yes?("Install required gems as root? (y/n)")
     rake "gems:install", :sudo => true
@@ -102,47 +103,12 @@ def install_acts_as_commentable
 end
 
 def generate_acts_as_rateable_migration
-  sleep 1 # Template runner is too fast and generate multiple migrations with the same number
-  file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_add_ratings.rb",
-  %q{class AddRatings < ActiveRecord::Migration
-      def self.up
-      create_table :ratings do |t|
-              t.column :rating, :integer    # You can add a default value here if you wish
-              t.column :rateable_id, :integer, :null => false
-              t.column :rateable_type, :string, :null => false
-      end
-      add_index :ratings, [:rateable_id, :rating]    # Not required, but should help more than it hurts
-      end
-
-      def self.down
-      drop_table :ratings
-      end
-  end
-  }
+  generate "acts_as_rateable_migration "
   puts "* acts_as_rateable migration... #{"generated".green.bold}";
 end
 
 def generate_acts_as_shareable_migration
-  sleep 1 # Template runner is too fast and generate multiple migrations with the same number
-  file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_create_shares.rb",
-  %q{class CreateShares < ActiveRecord::Migration
-        def self.up
-          create_table :shares, :force => true do |t|
-            t.column :user_id,            :integer
-            t.column :shareable_type,     :string, :limit => 30
-            t.column :shareable_id,       :integer
-            t.column :shared_to_type,     :string, :limit => 30
-            t.column :shared_to_id,       :integer
-            t.column :created_at,         :datetime
-            t.column :updated_at,         :datetime
-          end
-        end
-  
-        def self.down
-          drop_table :shares
-        end
-  end
-  }
+  generate "share_migration"
   puts "* acts_as_shareable migration... #{"generated".green.bold}";
 end
 
@@ -283,12 +249,11 @@ installation_step "Installing plugin dependencies..." do
   
   install_git_plugins({
     'acts_as_taggable_on_steroids' => "git://github.com/jviney/acts_as_taggable_on_steroids.git",
-    'acts_as_rateable'  => "git://github.com/andry1/acts_as_rateable.git",
     'acts_as_abusable'  => "git://github.com/linkingpaths/acts_as_abusable.git",
     'acts_as_scribe'    => "git://github.com/linkingpaths/acts_as_scribe.git",
     'paperclip'         => "git://github.com/thoughtbot/paperclip.git",
     'viking'            => "git://github.com/technoweenie/viking.git",
-    'acts_as_shareable' => "git://github.com/IamPersistent/acts_as_shareable.git"
+    'acts_as_shareable' => "git://github.com/molpe/acts_as_shareable.git"
   })
   
 end

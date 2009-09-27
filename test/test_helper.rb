@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/../../../../config/environme
 require 'test_help'
 require 'test/unit'
 require 'action_view/test_case'
-require 'mocha'
 
 begin
   gem 'thoughtbot-shoulda', '>=2.10.1'

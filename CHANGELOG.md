@@ -9,6 +9,7 @@ Edge
 * Caching Tog::Config values
 * Installation template now asks about installing gems as sudo
 * new generator for creating plugin's migrations, on installation and after updates
+* using acts_as_rateable and acts_as_shareable as plugins, which fixes problem with timestamps while installing
 
 0.5.4
 ----
