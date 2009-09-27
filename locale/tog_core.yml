@@ -127,6 +127,7 @@ en:
           profile: Profile
           my_account: My Account
           edit_profile: Edit Profile
+          locale: Language
         search_form:
           label: Search
           textfield: search...
