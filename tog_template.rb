@@ -70,9 +70,10 @@ def install_require_gems
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
   gem "mreinsch-acts_as_rateable", :lib => "acts_as_rateable", :version => '2.0.1'
+  gem 'RedCloth', :lib => 'redcloth', :version => '4.2.0'
       
   puts "\n"
-  if yes?("Install required gems as root? (y/n)")
+  if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'no'.")
     rake "gems:install", :sudo => true
   else
     rake "gems:install", :sudo => false
@@ -178,8 +179,6 @@ def gem_banner
 
 We are going to install the required gems. This could be done as super user in a host-wide manner of just for your user. 
 If install this gem as superuser you could be asked to enter your password.
-
-Note: if you are using Windows, please, answer 'no'.
 
 eos
 end
