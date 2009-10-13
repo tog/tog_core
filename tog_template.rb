@@ -71,7 +71,8 @@ def install_require_gems
   gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
   gem "mreinsch-acts_as_rateable", :lib => "acts_as_rateable", :version => '2.0.1'
   gem 'RedCloth', :lib => 'redcloth', :version => '4.2.0'
-      
+  gem "mbleigh-acts-as-taggable-on", :lib => "acts-as-taggable-on", :version => '1.0.5'
+  
   puts "\n"
   if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'no'.")
     rake "gems:install", :sudo => true
@@ -119,7 +120,7 @@ def generate_acts_as_abusable_migration
 end
 
 def generate_acts_as_taggable_migration
-  generate "acts_as_taggable_migration"
+  generate "acts_as_taggable_on_migration"
   puts "* acts_as_taggable migration... #{"generated".green.bold}";
 end
 
@@ -247,7 +248,6 @@ installation_step "Installing plugin dependencies..." do
   })  
   
   install_git_plugins({
-    'acts_as_taggable_on_steroids' => "git://github.com/jviney/acts_as_taggable_on_steroids.git",
     'acts_as_abusable'  => "git://github.com/linkingpaths/acts_as_abusable.git",
     'acts_as_scribe'    => "git://github.com/linkingpaths/acts_as_scribe.git",
     'paperclip'         => "git://github.com/thoughtbot/paperclip.git",
