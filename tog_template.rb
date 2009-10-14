@@ -73,7 +73,6 @@ def install_require_gems
   gem 'RedCloth', :lib => 'redcloth', :version => '4.2.0'
   gem "mbleigh-acts-as-taggable-on", :lib => "acts-as-taggable-on", :version => '1.0.5'
   gem "linkingpaths-acts_as_abusable", :lib => "acts_as_abusable", :version => '0.0.2'
-  gem "linkingpaths-acts_as_scribe", :lib => "acts_as_scribe", :version => '0.1.0'
   
   puts "\n"
   if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'no'.")
@@ -250,6 +249,7 @@ installation_step "Installing plugin dependencies..." do
   })  
   
   install_git_plugins({
+    'acts_as_scribe'    => "git://github.com/linkingpaths/acts_as_scribe.git",
     'paperclip'         => "git://github.com/thoughtbot/paperclip.git",
     'viking'            => "git://github.com/technoweenie/viking.git",
     'acts_as_shareable' => "git://github.com/molpe/acts_as_shareable.git"
