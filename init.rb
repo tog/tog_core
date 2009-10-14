@@ -1,5 +1,3 @@
-require_plugin 'acts_as_scribe'
-require_plugin 'acts_as_abusable'
 require_plugin 'viking'
 
 # require the will_paginate as a gem. This could be ´config.gem´ as well.
