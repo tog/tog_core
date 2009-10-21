@@ -73,6 +73,7 @@ def install_require_gems
   gem 'RedCloth', :lib => 'redcloth', :version => '4.2.0'
   gem "mbleigh-acts-as-taggable-on", :lib => "acts-as-taggable-on", :version => '1.0.5'
   gem "linkingpaths-acts_as_abusable", :lib => "acts_as_abusable", :version => '0.0.2'
+  gem 'rubyist-aasm', :version => '~> 2.1.1', :lib => 'aasm'
   
   puts "\n"
   if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'no'.")
@@ -136,6 +137,11 @@ def install_tog_user_plugin
   if STDIN.gets.strip == ""
     silence!   
 
+    quiet_git_install("restful_authentication", "git://github.com/technoweenie/restful-authentication.git") 
+    File.rename( "vendor/plugins/restful-authentication", "vendor/plugins/restful_authentication" )
+    
+    rake "auth:gen:site_key"
+    
     quiet_git_install('tog_user', "git://github.com/tog/tog_user.git", TOG_RELEASE)
 
     route "map.routes_from_plugin 'tog_user'"
@@ -244,10 +250,10 @@ end
 installation_step "Installing plugin dependencies..." do
   
   install_svn_plugins({
-    'acts_as_state_machine'  => "http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/trunk",
     'seo_urls'               => "http://svn.redshiftmedia.com/svn/plugins/seo_urls"
   })  
   
+  #also installed restful_authentication by tog_user optional part
   install_git_plugins({
     'acts_as_scribe'    => "git://github.com/linkingpaths/acts_as_scribe.git",
     'paperclip'         => "git://github.com/thoughtbot/paperclip.git",
