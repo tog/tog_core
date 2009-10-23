@@ -2,6 +2,8 @@ EDGE = "EDGE"
 TOG_RELEASE = EDGE
 #TOG_RELEASE = "v0.5.4"
 
+APP_NAME = @root.split('/').last
+
 module Colored
   extend self
   COLORS = { 'green'   => 32, 'yellow'  => 33,'blue'    => 34}
@@ -76,7 +78,7 @@ def install_require_gems
   gem 'rubyist-aasm', :version => '~> 2.1.1', :lib => 'aasm'
   
   puts "\n"
-  if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'no'.")
+  if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'n'. If installing gems as superuser you could be asked to enter your password.") 
     rake "gems:install", :sudo => true
   else
     rake "gems:install", :sudo => false
@@ -138,7 +140,7 @@ def install_tog_user_plugin
     silence!   
 
     quiet_git_install("restful_authentication", "git://github.com/technoweenie/restful-authentication.git") 
-    File.rename( "vendor/plugins/restful-authentication", "vendor/plugins/restful_authentication" )
+    File.rename "vendor/plugins/restful-authentication", "vendor/plugins/restful_authentication"
     
     rake "auth:gen:site_key"
     
@@ -186,7 +188,6 @@ def gem_banner
   puts <<-eos
 
 We are going to install the required gems. This could be done as super user in a host-wide manner of just for your user. 
-If install this gem as superuser you could be asked to enter your password.
 
 eos
 end
@@ -225,16 +226,18 @@ def install_git_plugins(plugins)
 end   
 
 def quiet_git_install(name, url, tag=nil)
+  tag = tag && tag != EDGE ? "-r tag #{tag}'": "" 
   print "* #{name} #{tag if tag}... "; 
-  resolution = "installed".green
-    command = "script/plugin install #{url}"
-    command << " -r 'tag #{tag}'" if tag && tag != EDGE 
-    Open3.popen3(command) { |stdin, stdout, stderr| 
-      stdout.each { |line| resolution = "already installed -> skipped".yellow if line =~ /already installed/; STDOUT.flush }
-    }
-  puts resolution.bold  
+  plugin name, :git => "#{tag} #{url}"
+  # Open3 doesn't work on windows, so no quiet install
+  # resolution = "installed".green
+  #   command = "script/plugin install #{url}"
+  #   command << " -r 'tag #{tag}'" if tag && tag != EDGE 
+  #    Open3.popen3(command) { |stdin, stdout, stderr| 
+  #      stdout.each { |line| resolution = "already installed -> skipped".yellow if line =~ /already installed/; STDOUT.flush }
+  #    }
+  # puts resolution.bold  
 end
-
 
 silence!
 
@@ -292,7 +295,7 @@ installation_step "Updating the host app files..." do
   puts "* copy tog plugins resources... #{"done".green.bold}";
   rake "db:migrate"
   puts "* run migrations... #{"done".green.bold}";
-  run 'rm public/index.html'
+  File.delete 'public/index.html'
   puts "* removing index.html... #{"done".green.bold}";
 end
 
