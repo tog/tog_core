@@ -1,0 +1,132 @@
+pt-BR:
+  will_paginate:
+    previous: "« Anterior"
+    next: "Seguinte »"
+    page_entries_info: Mostrando {{count}} {{entry_name}} {{start}} a {{end}} de {{total}}
+    entry_name: Entrada    
+  interface:
+    admin:
+      home: Início
+      manage: Gerenciar
+      manage_items:
+        configuration: Configuração
+        abuses: Abusos
+    member:
+      home: Início
+    site:
+      home: Início
+  tog_core:
+    plugin_name: Core
+    plugin_description: Plugin principal do tog
+    site:
+      comment:
+        added: Comentário adicionado
+        left_pending: Os comentários para esta entrada são moderados e exibidos após aprovação do moderador.
+        removed: Comentário removido
+        approved: Comentário aprovado
+        error_commenting: Erro ao salvar comentário
+        error_removing: Erro ao remover comentário
+        error_approving: Erro ao aprovar comentário
+        comments: Comentários
+        says: disse
+        permalink: permalink
+        no_comments: Nenhum comentário
+        add_comment: Adicione seu comentário
+        name: Nome
+        email: Email
+        website: Site
+        post_comment: Postar comentário
+        comment: Comentário
+      rating:
+        rating: Avaliação        
+        added: Avaliação enviada
+        already_rated: Você já avaliou esse item
+        error: Erro ao salvar avaliação
+      abuses:
+        report_abuse: Reportar abuso
+      tags:
+        tags: Tags
+        no_tags: Não há tags
+        tag_cloud: Nuvem de tags
+    admin:
+      dashboard:
+          title: Administração
+      configuration:
+        title: Configuração do site
+        update: Configuração de atualização
+      abuses:
+        title: Abusos reportados
+        confirm: Confirmar
+        confirmed: Abuso confirmado. Contactar o usuário e solicitar a remoção do conteúdo
+        model:
+          abuse: Abuso
+          subject: Assunto
+          subject_help: "Exemplo: Este conteúdo é uma tentativa phishing"
+          description: Descrição
+          description_help: "Certifique-se de incluir links relevantes para o conteúdo, se for o caso, e explicar a sua preocupação com o máximo de detalhes possíveis."
+          email: Email
+          created_at: Criado em
+          url: URL
+          resource: Recurso
+    views:
+      home:
+        index:
+          welcome_to: Bem-vindo ao {{site_name}}, uma rede social criada com o Tog
+          you_would_be_able_to: Aqui você poderá
+          create_your_own_profile: Criar seu próprio perfil.
+          find_your_friends_and_colleagues: Encontrar seus amigos e colegas
+          create_and_join_groups_of_interest: Criar e participar de grupos de interesses
+          and_enjoy_more: "E aproveitar também: compartilhamento de fotos e vídeos, sistema de blogs, fóruns e muitas outras extensões."
+          sign_up_now: Registre-se agora!
+          featured_users: Usuários em destaque
+          groups: Grupos
+          the_public_continuum: O que está acontecendo...
+          discover_more_plugins_for_tog: Descruba mais plugins para o Tog
+          picto_explanation: Picto é um plugin para gerenciamento e compartilhamento de fotos entre usuários de sua rede social.
+          vault_explanation: Um pequeno CMS para as páginas estáticas do seu site!
+          conversatio_explanation: Um sistema de blog simples.
+          see_more: Veja mais
+      abuse:
+        new:
+          your_report: Seu relatório
+          submit_report: Enviar relatório
+          cancel: Ou, cancelar isso e
+          return: retornar para a página que você estava vendo.
+      member:
+        dashboard:
+          index:
+            actions: Ações
+        site:
+          not_found:
+            error: erro | não encontrado
+      search:
+        search:
+          title: "Resultados para <strong>'{{term}}'</strong>"
+          not_found: Nenhum resultado encontrado.
+      shared:
+        anon_footer:
+          about: Sobre {{site}}
+        header_options:
+          greeting: Olá
+          account: Conta
+          my_profile: Meu perfil
+          dashboard: Painel
+          logout: Sair
+          sign_up: Registrar
+          login: Entrar
+        logged_footer:
+          powered_by: Esse site foi criado com a incrível <a href="http://www.toghq.com">Plataforma Tog</a>
+          groups: Grupos
+          my_groups: Meus grupos
+          create_new_group: Criar novo grupo
+          messages: Mensagens
+          my_messages: Minhas mensagens
+          write_a_message: Escrever uma mensagem
+          profile: Perfil
+          my_account: Minha conta
+          edit_profile: Editar perfil
+          locale: Idioma
+        search_form:
+          label: Busca
+          textfield: buscar...
+          submit: Vai

@@ -27,7 +27,7 @@
       <li><%= I18n.t("tog_core.views.shared.logged_footer.locale")%>
         <ul> 
           <% supported_languages do |l| %>
-             <li><%= link_to l[:name], set_locale_path(:locale => l[:iso_639_1]) %></li>
+             <li><%= link_to l[:native_name], set_locale_path(:locale => l[:iso_639_1]) %></li>
           <% end %>
         </ul>
       </li>

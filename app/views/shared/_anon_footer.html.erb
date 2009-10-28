@@ -3,7 +3,7 @@
   <span class="links"><%= link_to I18n.t('tog_core.views.shared.anon_footer.about', :site => config['plugins.tog_core.site.name']), "http://www.toghq.com" %></span>
 
   <% supported_languages do |l| %>
-     <span><%= link_to l[:name], set_locale_path(:locale => l[:iso_639_1]) %></span>
+     <span><%= link_to l[:native_name], set_locale_path(:locale => l[:iso_639_1]) %></span>
   <% end %>
 
 </div>  <!-- /#footer -->
