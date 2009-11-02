@@ -14,6 +14,7 @@ class CommentsControllerTest < ActionController::TestCase
       @owner = Factory(:user, :login => "test")
       @commentable_model_1 = mock
       @commentable_model_1.stubs({:id => 1,
+                                  :user => @owner, 
                                   :owner => @owner, 
                                   :new_record? => false,
                                   :comments => Comment, 

@@ -15,6 +15,7 @@ class Member::CommentsControllerTest < ActionController::TestCase
       @commentable_model_1 = mock
       @commentable_model_1.stubs({:id => 1,
                                   :owner => @owner, 
+                                  :user => @owner, 
                                   :new_record? => false,
                                   :comments => Comment, 
                                   :title_for_comment =>"The commentable title",
