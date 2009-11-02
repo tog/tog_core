@@ -12,6 +12,7 @@ Edge
 * using acts_as_rateable and acts_as_shareable as plugins, which fixes problem with timestamps while installing
 * using acts_as_taggable_on instead of acts_as_taggable_on_steroids_
 * comments can be posted to twitter (kudos to boonious)
+* for comments notification, commentable must respond to user or owner (till now must respond to owner)
 
 0.5.4
 ----

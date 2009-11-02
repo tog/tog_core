@@ -29,10 +29,10 @@ class Comment < ActiveRecord::Base
     end
   end
   def commentable_owner
-    commentable.owner if commentable 
+    commentable.respond_to?("owner") ? commentable.owner : commentable.user
   end
   def commentable_owner_email
-    commentable.owner.email if commentable && commentable.owner
+    commentable_owner.email if commentable && commentable_owner
   end
   def commentable_title
     commentable.title_for_comment
