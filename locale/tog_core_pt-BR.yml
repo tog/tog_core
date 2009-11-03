@@ -2,7 +2,7 @@ pt-BR:
   will_paginate:
     previous: "« Anterior"
     next: "Seguinte »"
-    page_entries_info: Mostrando {{count}} {{entry_name}} {{start}} a {{end}} de {{total}}
+    page_entries_info: Mostrando {{count}} {{entry_name}} | {{start}} a {{end}} de {{total}}
     entry_name: Entrada    
   interface:
     admin:
