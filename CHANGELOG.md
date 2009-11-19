@@ -13,6 +13,8 @@ Edge
 * using acts_as_taggable_on instead of acts_as_taggable_on_steroids_
 * comments can be posted to twitter (kudos to boonious)
 * for comments notification, commentable must respond to user or owner (till now must respond to owner)
+* New language selector using dropdown list
+* Added translations for Brazilian Portuguese
 
 0.5.4
 ----

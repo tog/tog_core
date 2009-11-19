@@ -1,9 +1,5 @@
 <div id="footer" class="clearfix">
   <span class="copyright"><strong><%=config['plugins.tog_core.site.name']%> © <%=Time.now.year%></strong></span>
   <span class="links"><%= link_to I18n.t('tog_core.views.shared.anon_footer.about', :site => config['plugins.tog_core.site.name']), "http://www.toghq.com" %></span>
-
-  <% supported_languages do |l| %>
-     <span><%= link_to l[:native_name], set_locale_path(:locale => l[:iso_639_1]) %></span>
-  <% end %>
-
+  <%= render :partial => "/shared/lang_selector" -%>
 </div>  <!-- /#footer -->

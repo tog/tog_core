@@ -3,6 +3,8 @@
     <strong><%=config['plugins.tog_core.site.name']%> © <%=Time.now.year%></strong>
     <br />
    <%= I18n.t("tog_core.views.shared.logged_footer.powered_by")%> <%= Tog::Version.full_version %>
+   <br/>
+   <%= render :partial => "/shared/lang_selector" -%>
   </div>
   <div class="links">
     <ul class="clearfix">
@@ -24,13 +26,6 @@
           <li><%= link_to I18n.t("tog_core.views.shared.logged_footer.edit_profile"), edit_member_profile_path(current_user.profile) -%></li>
         </ul>
       </li> 
-      <li><%= I18n.t("tog_core.views.shared.logged_footer.locale")%>
-        <ul> 
-          <% supported_languages do |l| %>
-             <li><%= link_to l[:native_name], set_locale_path(:locale => l[:iso_639_1]) %></li>
-          <% end %>
-        </ul>
-      </li>
     </ul>
   </div>
 </div>  <!-- /#footerlogged -->
