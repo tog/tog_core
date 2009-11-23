@@ -72,7 +72,7 @@ def install_require_gems
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
   gem "mreinsch-acts_as_rateable", :lib => "acts_as_rateable", :version => '2.0.1'
-  gem 'RedCloth', :lib => 'redcloth', :version => '4.2.0'
+  gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.2.0'
   gem "mbleigh-acts-as-taggable-on", :lib => "acts-as-taggable-on", :version => '1.0.5'
   gem "linkingpaths-acts_as_abusable", :lib => "acts_as_abusable", :version => '0.0.2'
   gem 'rubyist-aasm', :version => '~> 2.1.1', :lib => 'aasm'
