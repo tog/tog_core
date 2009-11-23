@@ -76,6 +76,7 @@ def install_require_gems
   gem "mbleigh-acts-as-taggable-on", :lib => "acts-as-taggable-on", :version => '1.0.5'
   gem "linkingpaths-acts_as_abusable", :lib => "acts_as_abusable", :version => '0.0.2'
   gem 'rubyist-aasm', :version => '~> 2.1.1', :lib => 'aasm'
+  gem 'oauth', :version => '>= 0.3.5'
   
   puts "\n"
   if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'n'. If installing gems as superuser you could be asked to enter your password.") 
