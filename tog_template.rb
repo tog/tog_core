@@ -1,6 +1,6 @@
 EDGE = "EDGE"
-TOG_RELEASE = EDGE
-#TOG_RELEASE = "v0.5.4"
+#TOG_RELEASE = EDGE
+TOG_RELEASE = "v0.6.0"
 
 APP_NAME = @root.split('/').last
 
@@ -227,7 +227,7 @@ def install_git_plugins(plugins)
 end   
 
 def quiet_git_install(name, url, tag=nil)
-  tag = tag && tag != EDGE ? "-r tag #{tag}'": "" 
+  tag = tag && tag != EDGE ? "-r 'tag #{tag}'": "" 
   print "* #{name} #{tag if tag}... "; 
   plugin name, :git => "#{tag} #{url}"
   # Open3 doesn't work on windows, so no quiet install
