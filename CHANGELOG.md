@@ -1,6 +1,9 @@
 Edge
 ----
 
+0.6.0
+----
+
 * Added acts_as_shareable to installation template, used by tog_social
 * EDGE version installation installs EDGE versions of tog's core plugins
 * Added config.reload_plugins entry to development environment
