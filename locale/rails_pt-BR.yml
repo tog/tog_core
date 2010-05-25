@@ -10,7 +10,7 @@ pt-BR:
     abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
     month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
     abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
-    order: [ :day, :month, :year ]
+    order: [:day, :month, :year]
   
   time:
     formats:
@@ -20,7 +20,7 @@ pt-BR:
     am: ''
     pm: ''
   
-  # date helper distanci em palavras
+  # distancia do tempo em palavras
   datetime:
     distance_in_words:
       half_a_minute: 'meio minuto'
@@ -63,6 +63,11 @@ pt-BR:
       over_x_years:
         one: 'mais de 1 ano'
         other: 'mais de {{count}} anos'
+
+      almost_x_years:
+        one: 'quase 1 ano'
+        other: 'quase {{count}} anos'
+    
     prompts:
       year:   "Ano"
       month:  "Mês"
@@ -92,8 +97,11 @@ pt-BR:
         delimiter: '.'
     human:
       format:
-        precision: 1
+        precision: 2
         delimiter: '.'
+        significant: true
+        strip_unsignificant_zeros: true
+      # number_to_human_size()
       storage_units:
         format: "%n %u"
         units:
@@ -104,16 +112,34 @@ pt-BR:
           mb: "MB"
           gb: "GB"
           tb: "TB"
+      # number_to_human()
+      # new in rails 3: please add to other locales
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""     
+          thousand: "mil"
+          million:
+            one: milhão
+            other: milhões
+          billion:
+            one: bilhão
+            other: bilhões
+          trillion:
+            one: trilhão
+            other: trilhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
 
-# Used in array.to_sentence.
+  # Usado no Array.to_sentence
   support:
     array:
       words_connector: ", "
       two_words_connector: " e "
       last_word_connector: " e "
-      skip_last_comma: false
     
-  # Active Record
+  # ActiveRecord
   activerecord:
     errors:
       template:
@@ -134,6 +160,7 @@ pt-BR:
         wrong_length: "não possui o tamanho esperado ({{count}} caracteres)"
         taken: "já está em uso"
         not_a_number: "não é um número"
+        not_an_integer: "não é um número inteiro"
         greater_than: "deve ser maior do que {{count}}"
         greater_than_or_equal_to: "deve ser maior ou igual a {{count}}"
         equal_to: "deve ser igual a {{count}}"
@@ -141,3 +168,4 @@ pt-BR:
         less_than_or_equal_to: "deve ser menor ou igual a {{count}}"
         odd: "deve ser ímpar"
         even: "deve ser par"
+        record_invalid: "A validação falhou: {{errors}}"
