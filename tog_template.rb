@@ -66,10 +66,11 @@ end
 def install_require_gems
   run "gem sources -a http://gems.github.com"
   
-  gem 'desert', :lib => 'desert', :version => '>= 0.5.2'
+  
+  
+  gem 'desert', :lib => 'desert', :version => '0.5.2'
   gem 'i18n', :version => '0.4.1'
   gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~> 2.3.6'
-  gem 'tog-tog', :lib => 'tog', :version => '0.5.3'
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :version => '2.0.1'
   gem "mreinsch-acts_as_rateable", :lib => "acts_as_rateable", :version => '2.0.1'
@@ -77,7 +78,7 @@ def install_require_gems
   gem "mbleigh-acts-as-taggable-on", :lib => "acts-as-taggable-on", :version => '1.0.5'
   gem "linkingpaths-acts_as_abusable", :lib => "acts_as_abusable", :version => '0.0.2'
   gem 'rubyist-aasm', :version => '~> 2.1.1', :lib => 'aasm'
-  gem 'oauth', :version => '0.3.5'
+  gem 'oauth', :version => '0.4.1'
   
   puts "\n"
   if yes?("Install required gems as root? (y/n). If you are using Windows, please, answer 'n'. If installing gems as superuser you could be asked to enter your password.") 
@@ -232,6 +233,16 @@ def install_git_plugins(plugins)
   end                    
 end   
 
+def install_jquery_support
+  puts "\n"
+  if yes?("Replace javascript library 'prototype' with 'jquery' (via jquery plugin)? (y/n)")
+    install_git_plugins({
+      'jrails'    => "http://github.com/aaronchi/jrails.git"
+    })
+  end
+end
+
+
 def quiet_git_install(name, url, tag=nil)
   tag = tag && tag != EDGE ? "-r tag #{tag}'": "" 
   print "* #{name} #{tag if tag}... "; 
@@ -272,6 +283,7 @@ installation_step "Installing plugin dependencies..." do
     'preferences'       => "http://github.com/pluginaweek/preferences.git"
   })
   
+  install_jquery_support
 end
 
 installation_step "Generating dependencies migrations..." do     
