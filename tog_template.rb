@@ -1,6 +1,6 @@
 EDGE = "EDGE"
-#TOG_RELEASE = EDGE
-TOG_RELEASE = "v0.6.0"
+TOG_RELEASE = EDGE
+#TOG_RELEASE = "v0.7"
 
 APP_NAME = @root.split('/').last
 
@@ -107,6 +107,11 @@ end
 def install_acts_as_commentable
   generate "comment" 
   puts "* acts_as_commentable installed... #{"generated".green.bold}";
+end
+
+def install_preferences
+  generate "preferences" 
+  puts "* preferences installed... #{"generated".green.bold}";
 end
 
 def generate_acts_as_rateable_migration
@@ -227,7 +232,7 @@ def install_git_plugins(plugins)
 end   
 
 def quiet_git_install(name, url, tag=nil)
-  tag = tag && tag != EDGE ? "-r 'tag #{tag}'": "" 
+  tag = tag && tag != EDGE ? "-r tag #{tag}'": "" 
   print "* #{name} #{tag if tag}... "; 
   plugin name, :git => "#{tag} #{url}"
   # Open3 doesn't work on windows, so no quiet install
@@ -262,18 +267,20 @@ installation_step "Installing plugin dependencies..." do
     'acts_as_scribe'    => "git://github.com/linkingpaths/acts_as_scribe.git",
     'paperclip'         => "git://github.com/thoughtbot/paperclip.git",
     'viking'            => "git://github.com/technoweenie/viking.git",
-    'acts_as_shareable' => "git://github.com/molpe/acts_as_shareable.git"
+    'acts_as_shareable' => "git://github.com/molpe/acts_as_shareable.git",
+    'preferences'       => "http://github.com/pluginaweek/preferences.git"
   })
   
 end
 
 installation_step "Generating dependencies migrations..." do     
   install_acts_as_commentable
+  install_preferences
   generate_acts_as_rateable_migration
   generate_acts_as_abusable_migration
   generate_acts_as_taggable_migration
   generate_acts_as_scribe_migration
-  generate_acts_as_shareable_migration
+  generate_acts_as_shareable_migration  
 end    
 
 
