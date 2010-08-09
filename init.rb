@@ -42,8 +42,6 @@ require "reloadable_plugins_patch"
 require "url_writer_retardase_inhibitor"
 
 
-# We've backported i18n-0.0.1 from rails to Tog, allowing pre-Rails 2.2 to use Backend::Simple
-# until they're upgraded is released and we see widespread adoption of it.
 require "i18n" unless defined?(I18n)
 Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
   I18n.load_path << file

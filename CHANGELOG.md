@@ -5,6 +5,7 @@ Edge
 * Admin view for managing comments
 * filter_item method for filtering lists in admin views moved here from tog_users
 * Updated template to install preferences plugins (support for users' preferences added to tog_social)
+* Using i18n gem instead of old tog's i18n support
 
 0.6.0
 ----

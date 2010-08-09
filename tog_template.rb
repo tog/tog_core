@@ -67,6 +67,7 @@ def install_require_gems
   run "gem sources -a http://gems.github.com"
   
   gem 'desert', :lib => 'desert', :version => '>= 0.5.2'
+  gem 'i18n', :version => '0.4.1'
   gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~> 2.3.6'
   gem 'tog-tog', :lib => 'tog', :version => '>= 0.5'
   gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
