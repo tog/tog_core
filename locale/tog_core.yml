@@ -11,6 +11,7 @@ en:
       manage_items:
         configuration: "Configuration"
         abuses: "Abuse"
+        comments: Comments
     member:
       home: Home
     site:
@@ -70,6 +71,29 @@ en:
           created_at: Created at
           url: URL
           resource: Resource
+      comments:
+        title: Comments
+        filter_comments: Fitler comments
+        filter_all: All
+        status_filter: Fitler by state
+        filter_approved: Approved
+        filter_pending: Pending
+        spam_filter: Filter by spam
+        filter_not_spam: No spam
+        filter_spam: Spam
+        approve: Approve
+        delete: Delte
+        delete_confirmation: Are you sure you want to delete this comment?
+        deleted: Comment deleted        
+        model:
+          author: Author
+          title: Title
+          comment: Comment
+          referer: Entry
+          approved: Approved
+          spam: Spam
+          description: Desciption
+          created_at: Creation date
     views:
       home:
         index:

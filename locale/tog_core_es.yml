@@ -11,6 +11,7 @@ es:
       manage_items:
         configuration: Configuración
         abuses: Abusos
+        comments: Comentarios
     member:
       home: Inicio
     site:
@@ -70,6 +71,29 @@ es:
           created_at: Creado el
           url: URL
           resource: Recurso
+      comments:
+        title: Comentarios
+        filter_comments: Filtrar comentarios
+        filter_all: Todos
+        status_filter: Filtrar por estado
+        filter_approved: Aprobados
+        filter_pending: Pendientes
+        spam_filter: Filtrar por spam
+        filter_not_spam: No spam
+        filter_spam: Spam
+        approve: Aprobar
+        delete: Eliminar
+        delete_confirmation: ¿Está seguro de querer eliminar este comentario?
+        deleted: Comentario eliminado
+        model:
+          author: Autor
+          title: Título
+          comment: Comentario
+          referer: Entrada
+          approved: Aprobado
+          spam: Spam  
+          description: Descripción
+          created_at: Fecha de creación        
     views:
       home:
         index:

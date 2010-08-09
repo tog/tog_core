@@ -1,0 +1,20 @@
+<h1><%= link_to I18n.t("tog_core.admin.comments.title"), admin_comments_path%> / #<%=@comment.id%></h1>
+
+<p>
+<%= link_to I18n.t("tog_core.admin.comments.approve"), approve_admin_comment_url(@comment), {:title => I18n.t("tog_core.admin.comments.approve"), :method => :post, :class => 'button'} unless @comment.approved-%>
+
+<%= link_to I18n.t("tog_core.admin.comments.delete"), admin_comment_path(@comment), :confirm => I18n.t("tog_core.admin.comments.delete_confirmation"), :method => :delete, :class => "button delete" %>
+</p>
+
+
+<table class="tableE">
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.title") %></th><td><%=@comment.title%></td></tr>
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.author") %></th><td><%=comment_user_name(@comment)%></td></tr>
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.referer") %></th><td><%= link_to @comment.referer, @comment.referer%></td></tr>
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.description") %></th><td><%=@comment.comment%></td></tr>
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.spam") %></th><td><%=@comment.spam%></td></tr>
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.approved") %></th><td><%=@comment.approved%></td></tr>
+  <tr><th scope="row"><%= I18n.t("tog_core.admin.comments.model.created_at") %></th><td><%=I18n.l(@comment.created_at, :format => :long)%></td></tr>
+</table>
+
+<br />

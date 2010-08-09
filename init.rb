@@ -55,6 +55,7 @@ Tog::Interface.sections(:admin).add "Home", "/admin/dashboard"
 
 manage = Tog::Interface.sections(:admin).add "Manage", "/admin/configuration"
 manage.add_item "Configuration", "/admin/configuration"
+manage.add_item "Comments", "/admin/comments"
 manage.add_item "Abuses", "/admin/manage_abuses"
 
 Tog::Interface.sections(:member).add "Home", "/"

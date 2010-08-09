@@ -10,7 +10,7 @@ class Admin::BaseController < ApplicationController
   end
   
   def distribution
-    @columns_distribution="col_80_20"
+    @columns_distribution="col_70_30"
   end
 
 end

@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = commentable.comments.new(params[:comment])
     @comment.user_id = current_user.id unless current_user.nil?
     @comment.approved = !commentable.respond_to?("moderated") || !commentable.moderated || commentable.commentable_owner == current_user
-
+    @comment.referer = request.referer || ""
     @comment.spam = Cerberus.check_spam(@comment, request)
     
     if params[:twitter] && current_user.service_provider.include?('twitter')

@@ -35,6 +35,7 @@ namespace(:admin) do |admin|
     manage.abuses_confirm '/manage_abuses/:id/confirm',  :action => 'confirm'
   end
   admin.resources :users
+  admin.resources :comments, :member => {:approve => :post}
 end
 
 namespace(:member) do |member|

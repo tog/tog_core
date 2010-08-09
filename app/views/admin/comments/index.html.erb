@@ -1,0 +1,70 @@
+<div class="titleB"><%=I18n.t("tog_core.admin.comments.title")%></div>
+<table class="tableE">
+  <thead>
+    <tr>
+      <th scope="col"><%=I18n.t("tog_core.admin.comments.model.title")%></th>
+      <th scope="col"><%=I18n.t("tog_core.admin.comments.model.author")%></th>
+      <th scope="col"><%=I18n.t("tog_core.admin.comments.model.comment")%></th>
+      <th scope="col"><%=I18n.t("tog_core.admin.comments.model.referer")%></th>
+      <th scope="col"><%=I18n.t("tog_core.admin.comments.model.approved")%></th>
+      <th scope="col"><%=I18n.t("tog_core.admin.comments.model.spam")%></th>      
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td colspan="6" class="info_results">
+        <span class="info_items"><%= page_entries_info @comments %></span>
+        <span class="pages_navigation right">
+          <%= will_paginate @comments, :container => false %>
+        </span>
+        </td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% for comment in @comments %>
+    <tr<%= cycle(' class="pair"','') -%>>
+      <td><strong><%= link_to comment.title, admin_comment_path(comment) %></strong></td>
+      <td><%= comment_user_name(comment) %></td>
+      <td><%= truncate(comment.comment) %></td>
+      <td><%= link_to comment.referer, comment.referer %></td>
+      <td><%= comment.approved %></td>
+      <td><%= comment.spam %></td>      
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<% content_for :sidebar do %>
+  <div class="portlet portletE" id="portlet_userFilter">
+    <h2>
+      <span>
+        <%= I18n.t("tog_core.admin.comments.filter_comments") %>
+      </span>
+    </h2>
+    <div class="portlet_content">
+      <ul>
+        <li>
+          <ul>
+            <li><%= link_to I18n.t("tog_core.admin.comments.filter_all"), admin_comments_path%></li>
+          </ul>
+        </li>
+        <li>
+          <%= I18n.t("tog_core.admin.comments.status_filter") %>
+          <ul>
+            <li><%= filter_item(:status, "true", I18n.t("tog_core.admin.comments.filter_approved")) %></li>            
+            <li><%= filter_item(:status, "false", I18n.t("tog_core.admin.comments.filter_pending")) %></li>
+          </ul>
+        </li>
+        <li>
+          <%= I18n.t("tog_core.admin.comments.spam_filter") %>
+          <ul>
+            <li><%= filter_item(:spam, "false", I18n.t("tog_core.admin.comments.filter_not_spam")) %></li>
+            <li><%= filter_item(:spam, "true", I18n.t("tog_core.admin.comments.filter_spam")) %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>    
+  </div> 
+  <br/>  
+<% end %>

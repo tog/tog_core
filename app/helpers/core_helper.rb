@@ -80,6 +80,25 @@ module CoreHelper
           :start => collection.offset.succ,
           :end => collection.offset + collection.size,
           :total => collection.total_entries)
+  end
+    
+  # Insert a li with link to filter
+  #
+  # Set field to nil to clear filter
+  #
+  # Options:
+  #   :li_on: CSS class of <li> element if item is active (default: 'on')
+  #
+  def filter_item(field, value, name, options={})
+    on_condition = params[field].to_s == value.to_s
+    li_class = on_condition ? (options[:li_on] || 'on') : nil
+    content_tag(:li, :class => li_class) do
+      if value 
+        link_to(name, params.merge(field => value.to_s))
+      else
+        link_to(name, params.except(field))
+      end
     end
+  end    
   
 end

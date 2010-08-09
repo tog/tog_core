@@ -1,6 +1,10 @@
 Edge
 ----
 
+* Saving referer for comment, so we can get back to he commented object from a comment list
+* Admin view for managing comments
+* filter_item method for filtering lists in admin views moved here from tog_users
+
 0.6.0
 ----
 
